@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should render 1`] = `
+.c0 {
+  font-size: 0.75rem;
+  color: #828b8e;
+  text-align: center;
+}
+
+<Footer>
+  <styled.div
+    className="footer"
+  >
+    <div
+      className="c0 footer"
+    >
+      © Ice Lam 2020
+       
+      ・
+       
+      <a
+        href="http://github.com/icelam/px2em-converter"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Github
+      </a>
+    </div>
+  </styled.div>
+</Footer>
+`;

@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page should render 1`] = `
+.c2 {
+  font-size: 0.75rem;
+  color: #828b8e;
+  text-align: center;
+}
+
+.c0 {
+  min-height: 100%;
+  padding: 3.125rem 5% 0 5%;
+  margin-bottom: -7.125rem;
+  box-sizing: border-box;
+}
+
+.c0:after {
+  content: " ";
+  display: block;
+  height: 7.125rem;
+}
+
+.c1 {
+  margin: 2.5rem 0 3.125rem 0;
+}
+
+@media only screen and (min-width:992px) {
+  .c0 {
+    padding: 3.125rem 1rem 0 1rem;
+  }
+}
+
+@media only screen and (max-width:575px) {
+  .c0 {
+    padding: 1rem 1rem 0 1rem;
+    margin-bottom: -5rem;
+  }
+
+  .c0:after {
+    content: " ";
+    display: block;
+    height: 5rem;
+  }
+}
+
+@media only screen and (max-width:575px) {
+  .c1 {
+    margin: 2.5rem 0 1rem 0;
+  }
+}
+
+<Page>
+  <styled.div
+    className="content"
+  >
+    <div
+      className="c0 content"
+    >
+      <p>
+        Some content here
+      </p>
+    </div>
+  </styled.div>
+  <styled.div>
+    <div
+      className="c1"
+    >
+      <Footer>
+        <styled.div
+          className="footer"
+        >
+          <div
+            className="c2 footer"
+          >
+            © Ice Lam 2020
+             
+            ・
+             
+            <a
+              href="http://github.com/icelam/px2em-converter"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Github
+            </a>
+          </div>
+        </styled.div>
+      </Footer>
+    </div>
+  </styled.div>
+</Page>
+`;

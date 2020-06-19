@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Remarks should render 1`] = `
+.c0 {
+  font-size: 0.75rem;
+  color: #828b8e;
+}
+
+<styled.span>
+  <span
+    className="c0"
+  >
+    Some remarks here
+  </span>
+</styled.span>
+`;

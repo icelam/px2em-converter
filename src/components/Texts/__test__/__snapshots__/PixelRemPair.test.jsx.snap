@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Remarks should render 1`] = `
+.c0 {
+  cursor: default;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+.c1 {
+  color: #828b8e;
+}
+
+.c2 {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+<PixelRemPair
+  pixel="16px"
+  rem="1rem"
+>
+  <styled.div
+    role="button"
+    tabIndex="0"
+  >
+    <div
+      className="c0"
+      role="button"
+      tabIndex="0"
+    >
+      <styled.span>
+        <span
+          className="c1"
+        >
+          16px
+           = 
+        </span>
+      </styled.span>
+      <styled.span>
+        <span
+          className="c2"
+        >
+          1rem
+        </span>
+      </styled.span>
+    </div>
+  </styled.div>
+</PixelRemPair>
+`;

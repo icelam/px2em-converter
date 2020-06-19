@@ -1,0 +1,48 @@
+/*
+ * Import fonts using static CSS file
+ * since styled-components createGlobalStyle's CSSOM APIs cannot handle it well
+ * @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap');
+ *
+ * Including local fonts instead to make sure PWA cache it well
+ * Consider to include local fonts:
+ * 400: local('Source Code Pro Regular'), local('SourceCodePro-Regular')
+ * 600: local('Source Code Pro SemiBold'), local('SourceCodePro-SemiBold')
+ * 700: local('Source Code Pro Bold'), local('SourceCodePro-Bold')
+ */
+
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('~@fonts/SourceCodePro-Regular/SourceCodePro-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('~@fonts/SourceCodePro-Regular/SourceCodePro-Regular.woff')
+      format('woff'),
+    url('~@fonts/SourceCodePro-Regular/SourceCodePro-Regular.ttf')
+      format('truetype');
+}
+
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('~@fonts/SourceCodePro-SemiBold/SourceCodePro-SemiBold.eot?#iefix')
+      format('embedded-opentype'),
+    url('~@fonts/SourceCodePro-SemiBold/SourceCodePro-SemiBold.woff')
+      format('woff'),
+    url('~@fonts/SourceCodePro-SemiBold/SourceCodePro-SemiBold.ttf')
+      format('truetype');
+}
+
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('~@fonts/SourceCodePro-Bold/SourceCodePro-Bold.eot?#iefix')
+      format('embedded-opentype'),
+    url('~@fonts/SourceCodePro-Bold/SourceCodePro-Bold.woff') format('woff'),
+    url('~@fonts/SourceCodePro-Bold/SourceCodePro-Bold.ttf') format('truetype');
+}

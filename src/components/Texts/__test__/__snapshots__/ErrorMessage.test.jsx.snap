@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorMessage should render 1`] = `
+.c0 {
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  color: #fc5959;
+  margin-top: 0.5rem;
+}
+
+<ErrorMessage>
+  <styled.div
+    className="error-message"
+  >
+    <div
+      className="c0 error-message"
+    >
+      Invalid format
+    </div>
+  </styled.div>
+</ErrorMessage>
+`;

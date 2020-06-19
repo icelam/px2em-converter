@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FlexTable should render 1`] = `
+.c0,
+.c0 > li {
+  border-style: solid;
+  border-color: #004b4d;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-width: 0 0 0 0.0625rem;
+}
+
+.c0 > li {
+  display: block;
+  box-sizing: border-box;
+  padding: 0.25rem 0.625rem;
+  margin: 0;
+  text-align: center;
+  border-width: 0 0.0625rem 0.0625rem 0;
+  -webkit-flex: 0 1 100%;
+  -ms-flex: 0 1 100%;
+  flex: 0 1 100%;
+  max-width: 100%;
+}
+
+.c0 > li:nth-child(-n+1) {
+  border-width: 0.0625rem 0.0625rem 0.0625rem 0;
+}
+
+@media only screen and (min-width:576px) {
+  .c0 > li {
+    -webkit-flex: 0 1 33.333333333333336%;
+    -ms-flex: 0 1 33.333333333333336%;
+    flex: 0 1 33.333333333333336%;
+    max-width: 33.333333333333336%;
+  }
+
+  .c0 > li:nth-child(-n+3) {
+    border-width: 0.0625rem 0.0625rem 0.0625rem 0;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c0 > li {
+    -webkit-flex: 0 1 25%;
+    -ms-flex: 0 1 25%;
+    flex: 0 1 25%;
+    max-width: 25%;
+  }
+
+  .c0 > li:nth-child(-n+4) {
+    border-width: 0.0625rem 0.0625rem 0.0625rem 0;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .c0 > li {
+    -webkit-flex: 0 1 20%;
+    -ms-flex: 0 1 20%;
+    flex: 0 1 20%;
+    max-width: 20%;
+  }
+
+  .c0 > li:nth-child(-n+5) {
+    border-width: 0.0625rem 0.0625rem 0.0625rem 0;
+  }
+}
+
+<FlexTable
+  data={
+    Array [
+      Object {
+        "content": <span>
+          1
+        </span>,
+        "key": "1",
+      },
+      Object {
+        "content": <span>
+          2
+        </span>,
+        "key": "2",
+      },
+      Object {
+        "content": <span>
+          3
+        </span>,
+        "key": "3",
+      },
+    ]
+  }
+>
+  <styled.ul
+    lg={4}
+    md={3}
+    sm={1}
+    xl={5}
+  >
+    <ul
+      className="c0"
+    >
+      <li
+        key="1"
+      >
+        <span>
+          1
+        </span>
+      </li>
+      <li
+        key="2"
+      >
+        <span>
+          2
+        </span>
+      </li>
+      <li
+        key="3"
+      >
+        <span>
+          3
+        </span>
+      </li>
+    </ul>
+  </styled.ul>
+</FlexTable>
+`;

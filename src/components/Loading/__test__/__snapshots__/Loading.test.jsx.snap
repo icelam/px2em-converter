@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading should render 1`] = `
+.c0 {
+  height: 100%;
+  padding: 10%;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c0:after {
+  content: ' .';
+  -webkit-animation: eJblQo 1.5s steps(5,end) infinite;
+  animation: eJblQo 1.5s steps(5,end) infinite;
+}
+
+.c1 {
+  font-size: 1em;
+  color: #828b8e;
+}
+
+<Loading>
+  <styled.div
+    className="loading"
+  >
+    <div
+      className="c0 loading"
+    >
+      <styled.div>
+        <div
+          className="c1"
+        >
+          Loading, please wait
+        </div>
+      </styled.div>
+    </div>
+  </styled.div>
+</Loading>
+`;

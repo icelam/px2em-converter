@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input should display red border on error 1`] = `
+.c0 {
+  background-color: #023135;
+  border-radius: 0;
+  border: 0.0625rem solid #fc5959;
+  padding: 0.625rem 0.875rem;
+  font-family: inherit;
+  font-size: 1em;
+  line-height: 1.5em;
+  color: #ffffff;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.c0:-moz-read-only {
+  background-color: #023135;
+  border: none;
+  color: #ffffff;
+}
+
+.c0:read-only {
+  background-color: #023135;
+  border: none;
+  color: #ffffff;
+}
+
+.c0::-webkit-input-placeholder {
+  color: #828b8e;
+}
+
+.c0::-moz-placeholder {
+  color: #828b8e;
+}
+
+.c0:-ms-input-placeholder {
+  color: #828b8e;
+}
+
+.c0::placeholder {
+  color: #828b8e;
+}
+
+.c0::-webkit-input-placeholder {
+  color: #828b8e;
+}
+
+.c0::-moz-placeholder {
+  color: #828b8e;
+}
+
+.c0:-moz-placeholder {
+  color: #828b8e;
+}
+
+.c0:-ms-input-placeholder {
+  color: #828b8e;
+}
+
+.c0::-ms-input-placeholder {
+  color: #828b8e;
+}
+
+.c0:-webkit-autofill,
+.c0:-webkit-autofill:hover,
+.c0:-webkit-autofill:focus,
+.c0:-webkit-autofill:active {
+  background-clip: content-box !important;
+  -webkit-box-shadow: 0 0 0 3.125rem #023135 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+<styled.input
+  error={true}
+>
+  <input
+    className="c0"
+  />
+</styled.input>
+`;
+
+exports[`Input should render 1`] = `
+.c0 {
+  background-color: #023135;
+  border-radius: 0;
+  border: 0.0625rem solid #023135;
+  padding: 0.625rem 0.875rem;
+  font-family: inherit;
+  font-size: 1em;
+  line-height: 1.5em;
+  color: #ffffff;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.c0:-moz-read-only {
+  background-color: #023135;
+  border: none;
+  color: #ffffff;
+}
+
+.c0:read-only {
+  background-color: #023135;
+  border: none;
+  color: #ffffff;
+}
+
+.c0::-webkit-input-placeholder {
+  color: #828b8e;
+}
+
+.c0::-moz-placeholder {
+  color: #828b8e;
+}
+
+.c0:-ms-input-placeholder {
+  color: #828b8e;
+}
+
+.c0::placeholder {
+  color: #828b8e;
+}
+
+.c0::-webkit-input-placeholder {
+  color: #828b8e;
+}
+
+.c0::-moz-placeholder {
+  color: #828b8e;
+}
+
+.c0:-moz-placeholder {
+  color: #828b8e;
+}
+
+.c0:-ms-input-placeholder {
+  color: #828b8e;
+}
+
+.c0::-ms-input-placeholder {
+  color: #828b8e;
+}
+
+.c0:-webkit-autofill,
+.c0:-webkit-autofill:hover,
+.c0:-webkit-autofill:focus,
+.c0:-webkit-autofill:active {
+  background-clip: content-box !important;
+  -webkit-box-shadow: 0 0 0 3.125rem #023135 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+<styled.input>
+  <input
+    className="c0"
+  />
+</styled.input>
+`;

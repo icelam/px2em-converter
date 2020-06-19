@@ -1,0 +1,220 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon should display error message 1`] = `
+.c1 {
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.c1 > svg {
+  height: 1em;
+  fill: #ffffff;
+}
+
+.c0 {
+  background-color: #828b8e;
+  color: #ffffff;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1em;
+  display: inline-block;
+  margin: 0.25rem;
+  box-shadow: 0 0 0.3125rem rgba(0,0,0,0.7);
+}
+
+<span
+  class="c0 message"
+>
+  <i
+    class="c1"
+  >
+    <svg>
+      error.svg
+    </svg>
+  </i>
+   
+  <span>
+    Error Message!
+  </span>
+</span>
+`;
+
+exports[`Icon should display info message 1`] = `
+.c1 {
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.c1 > svg {
+  height: 1em;
+  fill: #ffffff;
+}
+
+.c0 {
+  background-color: #828b8e;
+  color: #ffffff;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1em;
+  display: inline-block;
+  margin: 0.25rem;
+  box-shadow: 0 0 0.3125rem rgba(0,0,0,0.7);
+}
+
+<span
+  class="c0 message"
+>
+  <i
+    class="c1"
+  >
+    <svg>
+      info.svg
+    </svg>
+  </i>
+   
+  <span>
+    Info Message!
+  </span>
+</span>
+`;
+
+exports[`Icon should display loading message 1`] = `
+.c1 {
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.c1 > svg {
+  height: 1em;
+  fill: #ffffff;
+}
+
+.c2 {
+  -webkit-animation: cqkDSr 1s infinite linear;
+  animation: cqkDSr 1s infinite linear;
+}
+
+.c0 {
+  background-color: #828b8e;
+  color: #ffffff;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1em;
+  display: inline-block;
+  margin: 0.25rem;
+  box-shadow: 0 0 0.3125rem rgba(0,0,0,0.7);
+}
+
+<span
+  class="c0 message"
+>
+  <i
+    class="c1"
+  >
+    <svg
+      class="c2"
+    >
+      loading.svg
+    </svg>
+  </i>
+   
+  <span>
+    Loading Message!
+  </span>
+</span>
+`;
+
+exports[`Icon should display success message 1`] = `
+.c1 {
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.c1 > svg {
+  height: 1em;
+  fill: #ffffff;
+}
+
+.c0 {
+  background-color: #828b8e;
+  color: #ffffff;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1em;
+  display: inline-block;
+  margin: 0.25rem;
+  box-shadow: 0 0 0.3125rem rgba(0,0,0,0.7);
+}
+
+<Message
+  message="Success Message!"
+  type="success"
+>
+  <styled.span
+    className="message"
+  >
+    <span
+      className="c0 message"
+    >
+      <Icon
+        type="success"
+      >
+        <styled.i>
+          <i
+            className="c1"
+          >
+            <ForwardRef(SvgSuccess)>
+              <svg>
+                success.svg
+              </svg>
+            </ForwardRef(SvgSuccess)>
+          </i>
+        </styled.i>
+      </Icon>
+       
+      <span>
+        Success Message!
+      </span>
+    </span>
+  </styled.span>
+</Message>
+`;
+
+exports[`Icon should display warning message 1`] = `
+.c1 {
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.c1 > svg {
+  height: 1em;
+  fill: #ffffff;
+}
+
+.c0 {
+  background-color: #828b8e;
+  color: #ffffff;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1em;
+  display: inline-block;
+  margin: 0.25rem;
+  box-shadow: 0 0 0.3125rem rgba(0,0,0,0.7);
+}
+
+<span
+  class="c0 message"
+>
+  <i
+    class="c1"
+  >
+    <svg>
+      warn.svg
+    </svg>
+  </i>
+   
+  <span>
+    Warning Message!
+  </span>
+</span>
+`;

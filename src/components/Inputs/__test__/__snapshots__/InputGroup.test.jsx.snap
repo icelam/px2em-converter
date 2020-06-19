@@ -1,0 +1,288 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label should render 1`] = `
+.c2 {
+  background-color: #023135;
+  border-radius: 0;
+  border: 0.0625rem solid #023135;
+  padding: 0.625rem 0.875rem;
+  font-family: inherit;
+  font-size: 1em;
+  line-height: 1.5em;
+  color: #ffffff;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.c2:-moz-read-only {
+  background-color: #023135;
+  border: none;
+  color: #ffffff;
+}
+
+.c2:read-only {
+  background-color: #023135;
+  border: none;
+  color: #ffffff;
+}
+
+.c2::-webkit-input-placeholder {
+  color: #828b8e;
+}
+
+.c2::-moz-placeholder {
+  color: #828b8e;
+}
+
+.c2:-ms-input-placeholder {
+  color: #828b8e;
+}
+
+.c2::placeholder {
+  color: #828b8e;
+}
+
+.c2::-webkit-input-placeholder {
+  color: #828b8e;
+}
+
+.c2::-moz-placeholder {
+  color: #828b8e;
+}
+
+.c2:-moz-placeholder {
+  color: #828b8e;
+}
+
+.c2:-ms-input-placeholder {
+  color: #828b8e;
+}
+
+.c2::-ms-input-placeholder {
+  color: #828b8e;
+}
+
+.c2:-webkit-autofill,
+.c2:-webkit-autofill:hover,
+.c2:-webkit-autofill:focus,
+.c2:-webkit-autofill:active {
+  background-clip: content-box !important;
+  -webkit-box-shadow: 0 0 0 3.125rem #023135 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.c1 {
+  font-size: 1.125em;
+  line-height: 1.5em;
+  margin: 0 0 0.5em 0;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.c0 {
+  margin-bottom: 1.875rem;
+}
+
+<InputGroup
+  id="input-group-id"
+  inputValue="Some value"
+  label="Input label"
+  onChange={[MockFunction]}
+  placeholder="Placeholder text"
+>
+  <styled.div
+    id="input-group-id-group"
+  >
+    <div
+      className="c0"
+      id="input-group-id-group"
+    >
+      <styled.label
+        htmlFor="input-group-id"
+      >
+        <label
+          className="c1"
+          htmlFor="input-group-id"
+        >
+          Input label
+        </label>
+      </styled.label>
+      <styled.input
+        error={false}
+        id="input-group-id"
+        name="input-group-id"
+        onChange={[MockFunction]}
+        placeholder="Placeholder text"
+        value="Some value"
+      >
+        <input
+          className="c2"
+          id="input-group-id"
+          name="input-group-id"
+          onChange={[MockFunction]}
+          placeholder="Placeholder text"
+          value="Some value"
+        />
+      </styled.input>
+    </div>
+  </styled.div>
+</InputGroup>
+`;
+
+exports[`Label should show error message and red border on input when field value is invalid 1`] = `
+.c2 {
+  background-color: #023135;
+  border-radius: 0;
+  border: 0.0625rem solid #fc5959;
+  padding: 0.625rem 0.875rem;
+  font-family: inherit;
+  font-size: 1em;
+  line-height: 1.5em;
+  color: #ffffff;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.c2:-moz-read-only {
+  background-color: #023135;
+  border: none;
+  color: #ffffff;
+}
+
+.c2:read-only {
+  background-color: #023135;
+  border: none;
+  color: #ffffff;
+}
+
+.c2::-webkit-input-placeholder {
+  color: #828b8e;
+}
+
+.c2::-moz-placeholder {
+  color: #828b8e;
+}
+
+.c2:-ms-input-placeholder {
+  color: #828b8e;
+}
+
+.c2::placeholder {
+  color: #828b8e;
+}
+
+.c2::-webkit-input-placeholder {
+  color: #828b8e;
+}
+
+.c2::-moz-placeholder {
+  color: #828b8e;
+}
+
+.c2:-moz-placeholder {
+  color: #828b8e;
+}
+
+.c2:-ms-input-placeholder {
+  color: #828b8e;
+}
+
+.c2::-ms-input-placeholder {
+  color: #828b8e;
+}
+
+.c2:-webkit-autofill,
+.c2:-webkit-autofill:hover,
+.c2:-webkit-autofill:focus,
+.c2:-webkit-autofill:active {
+  background-clip: content-box !important;
+  -webkit-box-shadow: 0 0 0 3.125rem #023135 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.c1 {
+  font-size: 1.125em;
+  line-height: 1.5em;
+  margin: 0 0 0.5em 0;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.c3 {
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  color: #fc5959;
+  margin-top: 0.5rem;
+}
+
+.c0 {
+  margin-bottom: 1.875rem;
+}
+
+<InputGroup
+  error="Invalid input"
+  id="input-group-id"
+  inputValue="Some value"
+  label="Input label"
+  onChange={[MockFunction]}
+  placeholder="Placeholder text"
+>
+  <styled.div
+    id="input-group-id-group"
+  >
+    <div
+      className="c0"
+      id="input-group-id-group"
+    >
+      <styled.label
+        htmlFor="input-group-id"
+      >
+        <label
+          className="c1"
+          htmlFor="input-group-id"
+        >
+          Input label
+        </label>
+      </styled.label>
+      <styled.input
+        error={true}
+        id="input-group-id"
+        name="input-group-id"
+        onChange={[MockFunction]}
+        placeholder="Placeholder text"
+        value="Some value"
+      >
+        <input
+          className="c2"
+          id="input-group-id"
+          name="input-group-id"
+          onChange={[MockFunction]}
+          placeholder="Placeholder text"
+          value="Some value"
+        />
+      </styled.input>
+      <ErrorMessage>
+        <styled.div
+          className="error-message"
+        >
+          <div
+            className="c3 error-message"
+          >
+            Invalid input
+          </div>
+        </styled.div>
+      </ErrorMessage>
+    </div>
+  </styled.div>
+</InputGroup>
+`;

@@ -1,0 +1,43 @@
+{
+  "extends": ["react-app", "airbnb", "plugin:jsx-a11y/recommended"],
+  "settings": {
+    "import/core-modules": ["history", "prop-types"],
+    "import/resolver": [
+      "node",
+      {
+        "alias": {
+          "map": [
+            ["@", "./src"],
+            ["@components", "./src/components"],
+            ["@containers", "./src/containers"],
+            ["@fonts", "./src/assets/fonts"],
+            ["@hooks", "./src/hooks"],
+            ["@images", "./src/assets/images"],
+            ["@locale", "./src/locale"],
+            ["@pages", "./src/pages"],
+            ["@providers", "./src/providers"],
+            ["@routes", "./src/routes"],
+            ["@styles", "./src/styles"],
+            ["@utils", "./src/utils"]
+          ],
+          "extensions": [".js", ".jsx"]
+        }
+      }
+    ]
+  },
+  "rules": {
+    "no-unused-expressions": [2, { "allowTernary": true, "allowShortCircuit": true }],
+    "comma-dangle": ["error", "never"],
+    "react/jsx-one-expression-per-line": ["off"],
+    "no-nested-ternary": ["off"],
+    "no-plusplus": ["off"]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.stories.{js,jsx}", "jest.*.{js,jsx}", "**/*.test.{js,jsx}", "config-overrides.js", ".storybook/**/*.js"],
+      "rules": {
+        "import/no-extraneous-dependencies": ["error", {"optionalDependencies": false} ]
+      }
+    }
+  ]
+}

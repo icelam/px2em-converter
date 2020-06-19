@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon should display error icon 1`] = `
+.c0 {
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.c0 > svg {
+  height: 1em;
+  fill: #ffffff;
+}
+
+<i
+  class="c0"
+>
+  <svg>
+    error.svg
+  </svg>
+</i>
+`;
+
+exports[`Icon should display info icon 1`] = `
+.c0 {
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.c0 > svg {
+  height: 1em;
+  fill: #ffffff;
+}
+
+<i
+  class="c0"
+>
+  <svg>
+    info.svg
+  </svg>
+</i>
+`;
+
+exports[`Icon should display loading icon 1`] = `
+.c0 {
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.c0 > svg {
+  height: 1em;
+  fill: #ffffff;
+}
+
+.c1 {
+  -webkit-animation: cqkDSr 1s infinite linear;
+  animation: cqkDSr 1s infinite linear;
+}
+
+<i
+  class="c0"
+>
+  <svg
+    class="c1"
+  >
+    loading.svg
+  </svg>
+</i>
+`;
+
+exports[`Icon should display success icon 1`] = `
+.c0 {
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.c0 > svg {
+  height: 1em;
+  fill: #ffffff;
+}
+
+<Icon
+  type="success"
+>
+  <styled.i>
+    <i
+      className="c0"
+    >
+      <ForwardRef(SvgSuccess)>
+        <svg>
+          success.svg
+        </svg>
+      </ForwardRef(SvgSuccess)>
+    </i>
+  </styled.i>
+</Icon>
+`;
+
+exports[`Icon should display warn icon 1`] = `
+.c0 {
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.c0 > svg {
+  height: 1em;
+  fill: #ffffff;
+}
+
+<i
+  class="c0"
+>
+  <svg>
+    warn.svg
+  </svg>
+</i>
+`;
