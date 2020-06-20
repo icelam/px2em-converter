@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/icelam/px2em-converter/compare/v1.0.0...v1.1.0) (2020-06-20)
+
+
+### Features
+
+* add ability to switch display unit ([da57994](https://github.com/icelam/px2em-converter/commit/da5799454bf50fed0a0c97a65830773ccc7d7ce6))
+* add button component ([d29efce](https://github.com/icelam/px2em-converter/commit/d29efceecdb953255c6db0903b3a34267a0f24dc))
+
 ## 1.0.0 (2020-06-19)
 
 
