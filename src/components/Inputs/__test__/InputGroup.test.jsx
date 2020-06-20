@@ -12,6 +12,10 @@ const autoComplete = 'off';
 const maxLength = '15';
 const error = 'Invalid input';
 
+afterEach(() => {
+  onChange.mockClear();
+});
+
 describe('Label', () => {
   it('should render', () => {
     const wrapper = mountWithProvider(

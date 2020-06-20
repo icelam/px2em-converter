@@ -7,6 +7,10 @@ const pixel = '16px';
 const rem = '1rem';
 const copyToClipboard = jest.fn();
 
+afterEach(() => {
+  copyToClipboard.mockClear();
+});
+
 describe('Remarks', () => {
   it('should render', () => {
     const wrapper = mountWithProvider(<PixelRemPair pixel={pixel} rem={rem} />);
