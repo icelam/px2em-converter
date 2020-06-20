@@ -23,3 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 design/appicon-templates-assets/
+/storybook-static
