@@ -15,7 +15,7 @@
 [![codecov](https://codecov.io/gh/icelam/px2em-converter/branch/master/graph/badge.svg)](https://codecov.io/gh/icelam/px2em-converter)
 
 # PX2EM Converter #
-PX2EM is a conversion tool which allows you to calculate the em sizes from pixels.
+PX2EM is a conversion tool which allows you to calculate the em sizes from pixels. Unlike any other pixel to em conversion tool, PX2EM allows you to convert a list of pixels at one time, and save your inputs for re-visit.
 
 ![Preview](./docs/preview.png)
 
@@ -26,7 +26,7 @@ PX2EM is a conversion tool which allows you to calculate the em sizes from pixel
 
 ## Tech Stack ##
 * [React](https://reactjs.org/)
-* [styled-components](https://www.styled-components.com/)
+* [Styled Components](https://www.styled-components.com/)
 * [Jest](https://jestjs.io/)
 * [Enzyme](https://enzymejs.github.io/enzyme/)
 * [Storybook](https://storybook.js.org/)
