@@ -8,6 +8,7 @@ const SwitchWrapper = styled.div`
 
 const SwitchLabel = styled.span`
   font-size: 0.875rem;
+  font-weight: 600;
   color: ${({ theme: { color } }) => color.secondaryTextColor};
   margin: 0 0.3125rem 0 0;
 `;

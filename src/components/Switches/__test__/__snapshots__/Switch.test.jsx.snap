@@ -301,6 +301,7 @@ exports[`Switch should render 1`] = `
 
 .c1 {
   font-size: 0.875rem;
+  font-weight: 600;
   color: #828b8e;
   margin: 0 0.3125rem 0 0;
 }
