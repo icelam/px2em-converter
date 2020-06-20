@@ -2,7 +2,7 @@
 
 exports[`Remarks should render 1`] = `
 .c0 {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: #828b8e;
 }
 

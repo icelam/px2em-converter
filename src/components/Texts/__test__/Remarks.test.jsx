@@ -19,7 +19,7 @@ describe('Remarks', () => {
 
   it('should display in smaller size and have a lighter color', () => {
     const wrapper = mountWithProvider(<Remarks>{remarks}</Remarks>);
-    expect(wrapper.find('span')).toHaveStyleRule('font-size', '0.75rem');
+    expect(wrapper.find('span')).toHaveStyleRule('font-size', '0.875rem');
     expect(wrapper.find('span')).toHaveStyleRule('color', themes.dark.color.secondaryTextColor);
   });
 });
