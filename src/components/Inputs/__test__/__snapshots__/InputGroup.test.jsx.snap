@@ -96,10 +96,11 @@ exports[`Label should render 1`] = `
   placeholder="Placeholder text"
 >
   <styled.div
+    className="input-group"
     id="input-group-id-group"
   >
     <div
-      className="c0"
+      className="c0 input-group"
       id="input-group-id-group"
     >
       <styled.label
@@ -238,10 +239,11 @@ exports[`Label should show error message and red border on input when field valu
   placeholder="Placeholder text"
 >
   <styled.div
+    className="input-group"
     id="input-group-id-group"
   >
     <div
-      className="c0"
+      className="c0 input-group"
       id="input-group-id-group"
     >
       <styled.label

@@ -23,25 +23,30 @@ exports[`Remarks should render 1`] = `
   rem="1rem"
 >
   <styled.div
+    className="pixel-rem-pair"
     role="button"
     tabIndex="0"
   >
     <div
-      className="c0"
+      className="c0 pixel-rem-pair"
       role="button"
       tabIndex="0"
     >
-      <styled.span>
+      <styled.span
+        className="pixel-rem-pair__pixel"
+      >
         <span
-          className="c1"
+          className="c1 pixel-rem-pair__pixel"
         >
           16px
            = 
         </span>
       </styled.span>
-      <styled.span>
+      <styled.span
+        className="pixel-rem-pair__rem"
+      >
         <span
-          className="c2"
+          className="c2 pixel-rem-pair__rem"
         >
           1rem
         </span>

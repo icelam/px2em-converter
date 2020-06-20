@@ -12,7 +12,7 @@ const InputWrapper = styled.div`
 const InputGroup = ({
   id, label, placeholder, inputValue, error, onChange, ...props
 }) => (
-  <InputWrapper id={`${id}-group`}>
+  <InputWrapper id={`${id}-group`} className="input-group">
     <Label htmlFor={id}>{label}</Label>
     <Input
       name={id}

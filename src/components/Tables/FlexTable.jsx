@@ -67,8 +67,8 @@ const Table = styled.ul`
 const FlexTable = ({
   data, sm, md, lg, xl
 }) => (
-  <Table sm={sm} md={md} lg={lg} xl={xl}>
-    {data.map(({ key, content }) => <li key={key}>{content}</li>)}
+  <Table sm={sm} md={md} lg={lg} xl={xl} className="flex-table">
+    {data.map(({ key, content }) => <li className="flex-table__cell" key={key}>{content}</li>)}
   </Table>
 );
 

@@ -39,8 +39,8 @@ describe('Label', () => {
         onChange={onChange}
       />
     );
-    expect(wrapper.find('div label').text()).toEqual(label);
-    expect(wrapper.find('div label').props().htmlFor).toEqual(id);
+    expect(wrapper.find('div.input-group label').text()).toEqual(label);
+    expect(wrapper.find('div.input-group label').props().htmlFor).toEqual(id);
   });
 
   it('should display input box with placeholder and value', () => {
@@ -53,8 +53,8 @@ describe('Label', () => {
         onChange={onChange}
       />
     );
-    expect(wrapper.find('div input').props().value).toEqual(inputValue);
-    expect(wrapper.find('div input').props().placeholder).toEqual(placeholder);
+    expect(wrapper.find('div.input-group input').props().value).toEqual(inputValue);
+    expect(wrapper.find('div.input-group input').props().placeholder).toEqual(placeholder);
   });
 
   it('should spread extra props to input', () => {
@@ -69,8 +69,8 @@ describe('Label', () => {
         maxLength={maxLength}
       />
     );
-    expect(wrapper.find('div input').props().autoComplete).toEqual(autoComplete);
-    expect(wrapper.find('div input').props().maxLength).toEqual(maxLength);
+    expect(wrapper.find('div.input-group input').props().autoComplete).toEqual(autoComplete);
+    expect(wrapper.find('div.input-group input').props().maxLength).toEqual(maxLength);
   });
 
   it('should show error message and red border on input when field value is invalid', () => {
@@ -84,9 +84,9 @@ describe('Label', () => {
         error={error}
       />
     );
-    expect(wrapper.find('div div.error-message')).toHaveLength(1);
-    expect(wrapper.find('div div.error-message').text()).toEqual(error);
-    expect(wrapper.find('div input')).toHaveStyleRule(
+    expect(wrapper.find('div.input-group div.error-message')).toHaveLength(1);
+    expect(wrapper.find('div.input-group div.error-message').text()).toEqual(error);
+    expect(wrapper.find('div.input-group input')).toHaveStyleRule(
       'border', `0.0625rem solid ${themes.dark.color.errorColor}`
     );
     expect(wrapper).toMatchSnapshot();
@@ -102,7 +102,7 @@ describe('Label', () => {
         onChange={onChange}
       />
     );
-    wrapper.find('div input').simulate('change');
+    wrapper.find('div.input-group input').simulate('change');
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 });

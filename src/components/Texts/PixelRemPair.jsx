@@ -29,9 +29,10 @@ const PixelRemPair = ({ pixel, rem, copyToClipboard }) => {
       onKeyPress={onClick}
       role="button"
       tabIndex="0"
+      className="pixel-rem-pair"
     >
-      <PixelText>{pixel} = </PixelText>
-      <RemText ref={remRef}>{rem}</RemText>
+      <PixelText className="pixel-rem-pair__pixel">{pixel} = </PixelText>
+      <RemText className="pixel-rem-pair__rem" ref={remRef}>{rem}</RemText>
     </PairWrapper>
   );
 };

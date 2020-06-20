@@ -102,15 +102,17 @@ exports[`FlexTable should render 1`] = `
   }
 >
   <styled.ul
+    className="flex-table"
     lg={4}
     md={3}
     sm={1}
     xl={5}
   >
     <ul
-      className="c0"
+      className="c0 flex-table"
     >
       <li
+        className="flex-table__cell"
         key="1"
       >
         <span>
@@ -118,6 +120,7 @@ exports[`FlexTable should render 1`] = `
         </span>
       </li>
       <li
+        className="flex-table__cell"
         key="2"
       >
         <span>
@@ -125,6 +128,7 @@ exports[`FlexTable should render 1`] = `
         </span>
       </li>
       <li
+        className="flex-table__cell"
         key="3"
       >
         <span>

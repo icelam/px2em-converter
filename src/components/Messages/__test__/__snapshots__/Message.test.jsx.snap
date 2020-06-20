@@ -26,7 +26,7 @@ exports[`Icon should display error message 1`] = `
   class="c0 message"
 >
   <i
-    class="c1"
+    class="c1 svg-icon"
   >
     <svg>
       error.svg
@@ -65,7 +65,7 @@ exports[`Icon should display info message 1`] = `
   class="c0 message"
 >
   <i
-    class="c1"
+    class="c1 svg-icon"
   >
     <svg>
       info.svg
@@ -109,7 +109,7 @@ exports[`Icon should display loading message 1`] = `
   class="c0 message"
 >
   <i
-    class="c1"
+    class="c1 svg-icon"
   >
     <svg
       class="c2"
@@ -159,9 +159,11 @@ exports[`Icon should display success message 1`] = `
       <Icon
         type="success"
       >
-        <styled.i>
+        <styled.i
+          className="svg-icon"
+        >
           <i
-            className="c1"
+            className="c1 svg-icon"
           >
             <ForwardRef(SvgSuccess)>
               <svg>
@@ -206,7 +208,7 @@ exports[`Icon should display warning message 1`] = `
   class="c0 message"
 >
   <i
-    class="c1"
+    class="c1 svg-icon"
   >
     <svg>
       warn.svg

@@ -51,7 +51,7 @@ const Icon = ({ type }) => {
   }
 
   return icon
-    ? <IconWrapper>{icon}</IconWrapper>
+    ? <IconWrapper className="svg-icon">{icon}</IconWrapper>
     : null;
 };
 
