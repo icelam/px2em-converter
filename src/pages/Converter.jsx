@@ -118,7 +118,7 @@ const Converter = ({
           value={displayUnit}
           options={unitOptions}
           label={intl.formatMessage({ id: 'converter.setting.displayUnit' })}
-          buttonWidth="2.5rem"
+          buttonWidth="3.5rem"
         />
       </SectionHead>
       <ResultTableWrapper>
