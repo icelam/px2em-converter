@@ -146,7 +146,7 @@ exports[`Icon should display success message 1`] = `
   box-shadow: 0 0 0.3125rem rgba(0,0,0,0.7);
 }
 
-<Message
+<Memo(Message)
   message="Success Message!"
   type="success"
 >
@@ -179,7 +179,7 @@ exports[`Icon should display success message 1`] = `
       </span>
     </span>
   </styled.span>
-</Message>
+</Memo(Message)>
 `;
 
 exports[`Icon should display warning message 1`] = `

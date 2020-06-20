@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -58,4 +58,4 @@ Button.defaultProps = {
   disabled: false
 };
 
-export default Button;
+export default memo(Button);

@@ -30,7 +30,6 @@ exports[`Button should render 1`] = `
 }
 
 <Button
-  disabled={false}
   onClick={[MockFunction]}
 >
   <styled.button

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Icon } from '../Icons';
@@ -25,4 +25,4 @@ Message.propTypes = {
   message: PropTypes.string.isRequired
 };
 
-export default Message;
+export default memo(Message);
