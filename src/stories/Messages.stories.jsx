@@ -1,5 +1,5 @@
 import React from 'react';
-import { Message } from '@components';
+import { Button, Message, message } from '@components';
 
 export default {
   title: 'Message'
@@ -33,4 +33,18 @@ export const LoadingMessageStory = () => <Message type="loading" message="Loadin
 
 LoadingMessageStory.story = {
   name: 'Loading Message'
+};
+
+export const TriggerMessageStory = () => (
+  <>
+    <Button onClick={() => message.success('Success!')}>Triggger a success message</Button><br />
+    <Button onClick={() => message.warn('Warning!')}>Triggger a warning message</Button><br />
+    <Button onClick={() => message.info('Info!')}>Triggger a info message</Button><br />
+    <Button onClick={() => message.success('Error!')}>Triggger a error message</Button><br />
+    <Button onClick={() => message.success('Loading!')}>Triggger a loading message</Button>
+  </>
+);
+
+TriggerMessageStory.story = {
+  name: 'Trigger Messages'
 };
