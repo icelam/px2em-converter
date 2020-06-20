@@ -10,9 +10,11 @@
   "converter.input.pixelRange.placeholder": "e.g. 12 - 20, 50, 100",
   "converter.input.pixelRange.errorMessage": "Invalid format",
   "converter.result.title": "Result",
+  "converter.setting.displayUnit": "Unit:",
   "footer.copyright": "© Ice Lam {currentYear}",
   "footer.github": "Github",
   "footer.github.link": "http://github.com/icelam/px2em-converter",
   "unit.px": "px",
-  "unit.rem": "rem"
+  "unit.rem": "rem",
+  "unit.em": "em"
 }

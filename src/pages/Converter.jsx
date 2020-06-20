@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useIntl } from 'react-intl';
 import {
-  AppTitle, InputGroup, Remarks, FlexTable, PixelRemPair
+  AppTitle, InputGroup, Remarks, FlexTable, PixelRemPair, Switch
 } from '@components';
 
 const FormWrapper = styled.div`
@@ -18,7 +18,19 @@ const ResultTableWrapper = styled.div`
   margin: 1.875rem 0 0 0;
 `;
 
+const SectionHead = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const SubHeading = styled.h2`
+  margin: 0;
+`;
+
 const Converter = ({
+  displayUnit,
+  handleDisplayUnitChange,
   baseFontSize,
   handleBaseFontSizeChange,
   hasBaseFontSizeError,
@@ -29,6 +41,11 @@ const Converter = ({
   copyRemToClipboard
 }) => {
   const intl = useIntl();
+
+  const unitOptions = useMemo(() => [
+    { label: intl.formatMessage({ id: 'unit.em' }), value: 'em' },
+    { label: intl.formatMessage({ id: 'unit.rem' }), value: 'rem' }
+  ], [intl]);
 
   const pixelRangeLabel = useMemo(() => (
     <>
@@ -44,7 +61,10 @@ const Converter = ({
     pixel, rem
   }) => {
     const pxWithUnit = `${pixel}${intl.formatMessage({ id: 'unit.px' })}`;
-    const remWithUnit = `${rem}${intl.formatMessage({ id: 'unit.rem' })}`;
+    const remWithUnit = `${rem}${displayUnit === 'rem'
+      ? intl.formatMessage({ id: 'unit.rem' })
+      : intl.formatMessage({ id: 'unit.em' })
+    }`;
 
     return {
       key: `${pxWithUnit}-${remWithUnit}`,
@@ -56,7 +76,7 @@ const Converter = ({
         />
       )
     };
-  }), [pixelRemList, copyRemToClipboard, intl]);
+  }), [displayUnit, pixelRemList, copyRemToClipboard, intl]);
 
   return (
     <>
@@ -91,7 +111,16 @@ const Converter = ({
           autoComplete="off"
         />
       </FormWrapper>
-      <h2>{intl.formatMessage({ id: 'converter.result.title' })}</h2>
+      <SectionHead>
+        <SubHeading>{intl.formatMessage({ id: 'converter.result.title' })}</SubHeading>
+        <Switch
+          onChange={handleDisplayUnitChange}
+          value={displayUnit}
+          options={unitOptions}
+          label={intl.formatMessage({ id: 'converter.setting.displayUnit' })}
+          buttonWidth="2.5rem"
+        />
+      </SectionHead>
       <ResultTableWrapper>
         <FlexTable
           data={pixelRemTableData}
@@ -106,6 +135,10 @@ const Converter = ({
 };
 
 Converter.propTypes = {
+  displayUnit: PropTypes.oneOf(
+    ['em', 'rem']
+  ).isRequired,
+  handleDisplayUnitChange: PropTypes.func.isRequired,
   baseFontSize: PropTypes.string.isRequired,
   handleBaseFontSizeChange: PropTypes.func.isRequired,
   hasBaseFontSizeError: PropTypes.bool.isRequired,

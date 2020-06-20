@@ -10,14 +10,23 @@ const Converter = () => {
   // Get and apply stored user inputs, fallback to default value when data not found
   const storedBaseFontSize = localStorageUtils.getKey('baseFontSize');
   const storedPixelRange = localStorageUtils.getKey('pixelRange');
+  const storedDisplayUnit = localStorageUtils.getKey('displayUnit');
+
   const defaultBaseFontSize = storedBaseFontSize || '16';
   const defaultPixelRange = storedPixelRange || '12 - 20, 50, 100';
+  const defaultDisplayUnit = storedDisplayUnit || 'em';
 
+  const [displayUnit, setDisplayUnit] = useState(defaultDisplayUnit);
   const [baseFontSize, setBaseFontSize] = useState(defaultBaseFontSize);
   const [hasBaseFontSizeError, setHasBaseFontSizeError] = useState(false);
   const [pixelRange, setPixelRange] = useState(defaultPixelRange);
   const [hasPixelRangeFormatError, setHasPixelRangeFormatError] = useState(false);
   const [pixelRemList, setPixelRemList] = useState([]);
+
+  const handleDisplayUnitChange = useCallback((value) => {
+    setDisplayUnit(value);
+    localStorageUtils.setKey('displayUnit', value);
+  }, []);
 
   const handleBaseFontSizeChange = useCallback((event) => {
     setBaseFontSize(event.target.value);
@@ -74,6 +83,8 @@ const Converter = () => {
 
   return (
     <ConverterPage
+      displayUnit={displayUnit}
+      handleDisplayUnitChange={handleDisplayUnitChange}
       baseFontSize={baseFontSize}
       handleBaseFontSizeChange={handleBaseFontSizeChange}
       hasBaseFontSizeError={hasBaseFontSizeError}

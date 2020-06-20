@@ -31,6 +31,7 @@ describe('Button', () => {
     expect(wrapper.find('button.action-button').text()).toEqual(disabledButtonText);
     expect(wrapper.find('button.action-button')).toHaveStyleRule('opacity', '0.5', { modifier: ':disabled' });
     expect(wrapper.find('button.action-button')).toHaveStyleRule('cursor', 'not-allowed', { modifier: ':disabled' });
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('should trigger function when clicking on button', () => {

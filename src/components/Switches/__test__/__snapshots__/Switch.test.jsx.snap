@@ -1,0 +1,409 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch should be able to define minimum button width 1`] = `
+.c0 {
+  margin: 0.25rem 0;
+}
+
+.c1 {
+  display: inline-block;
+  border: 0.0625rem solid #004b4d;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: #05171d;
+  color: #828b8e;
+  padding: 0.3125rem 0.875rem;
+  margin: 0 0 0 -0.0625rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  min-width: 2.5rem;
+}
+
+<Switch
+  buttonWidth="2.5rem"
+  onChange={[MockFunction]}
+  options={
+    Array [
+      Object {
+        "label": "em",
+        "value": "em",
+      },
+      Object {
+        "label": "rem",
+        "value": "rem",
+      },
+    ]
+  }
+>
+  <styled.div
+    className="switch"
+  >
+    <div
+      className="c0 switch"
+    >
+      <styled.button
+        buttonWidth="2.5rem"
+        className="switch__button"
+        key="em"
+        onClick={[Function]}
+        selected={false}
+      >
+        <button
+          className="c1 switch__button"
+          onClick={[Function]}
+          selected={false}
+        >
+          em
+        </button>
+      </styled.button>
+      <styled.button
+        buttonWidth="2.5rem"
+        className="switch__button"
+        key="rem"
+        onClick={[Function]}
+        selected={false}
+      >
+        <button
+          className="c1 switch__button"
+          onClick={[Function]}
+          selected={false}
+        >
+          rem
+        </button>
+      </styled.button>
+    </div>
+  </styled.div>
+</Switch>
+`;
+
+exports[`Switch should be able to highlight selected value 1`] = `
+.c0 {
+  margin: 0.25rem 0;
+}
+
+.c1 {
+  display: inline-block;
+  border: 0.0625rem solid #004b4d;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: #05171d;
+  color: #828b8e;
+  padding: 0.3125rem 0.875rem;
+  margin: 0 0 0 -0.0625rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+}
+
+.c2 {
+  display: inline-block;
+  border: 0.0625rem solid #004b4d;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: #004b4d;
+  color: #05171d;
+  padding: 0.3125rem 0.875rem;
+  margin: 0 0 0 -0.0625rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+}
+
+<Switch
+  onChange={[MockFunction]}
+  options={
+    Array [
+      Object {
+        "label": "em",
+        "value": "em",
+      },
+      Object {
+        "label": "rem",
+        "value": "rem",
+      },
+    ]
+  }
+  value="rem"
+>
+  <styled.div
+    className="switch"
+  >
+    <div
+      className="c0 switch"
+    >
+      <styled.button
+        className="switch__button"
+        key="em"
+        onClick={[Function]}
+        selected={false}
+      >
+        <button
+          className="c1 switch__button"
+          onClick={[Function]}
+          selected={false}
+        >
+          em
+        </button>
+      </styled.button>
+      <styled.button
+        className="switch__button"
+        key="rem"
+        onClick={[Function]}
+        selected={true}
+      >
+        <button
+          className="c2 switch__button"
+          onClick={[Function]}
+          selected={true}
+        >
+          rem
+        </button>
+      </styled.button>
+    </div>
+  </styled.div>
+</Switch>
+`;
+
+exports[`Switch should display switch without label and 4 options 1`] = `
+.c0 {
+  margin: 0.25rem 0;
+}
+
+.c1 {
+  display: inline-block;
+  border: 0.0625rem solid #004b4d;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: #05171d;
+  color: #828b8e;
+  padding: 0.3125rem 0.875rem;
+  margin: 0 0 0 -0.0625rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+}
+
+<Switch
+  onChange={[MockFunction]}
+  options={
+    Array [
+      Object {
+        "label": "1",
+        "value": 1,
+      },
+      Object {
+        "label": "2",
+        "value": 2,
+      },
+      Object {
+        "label": "3",
+        "value": 3,
+      },
+      Object {
+        "label": "4",
+        "value": 4,
+      },
+    ]
+  }
+>
+  <styled.div
+    className="switch"
+  >
+    <div
+      className="c0 switch"
+    >
+      <styled.button
+        className="switch__button"
+        key="1"
+        onClick={[Function]}
+        selected={false}
+      >
+        <button
+          className="c1 switch__button"
+          onClick={[Function]}
+          selected={false}
+        >
+          1
+        </button>
+      </styled.button>
+      <styled.button
+        className="switch__button"
+        key="2"
+        onClick={[Function]}
+        selected={false}
+      >
+        <button
+          className="c1 switch__button"
+          onClick={[Function]}
+          selected={false}
+        >
+          2
+        </button>
+      </styled.button>
+      <styled.button
+        className="switch__button"
+        key="3"
+        onClick={[Function]}
+        selected={false}
+      >
+        <button
+          className="c1 switch__button"
+          onClick={[Function]}
+          selected={false}
+        >
+          3
+        </button>
+      </styled.button>
+      <styled.button
+        className="switch__button"
+        key="4"
+        onClick={[Function]}
+        selected={false}
+      >
+        <button
+          className="c1 switch__button"
+          onClick={[Function]}
+          selected={false}
+        >
+          4
+        </button>
+      </styled.button>
+    </div>
+  </styled.div>
+</Switch>
+`;
+
+exports[`Switch should render 1`] = `
+.c0 {
+  margin: 0.25rem 0;
+}
+
+.c1 {
+  font-size: 0.875rem;
+  color: #828b8e;
+  margin: 0 0.3125rem 0 0;
+}
+
+.c2 {
+  display: inline-block;
+  border: 0.0625rem solid #004b4d;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: #004b4d;
+  color: #05171d;
+  padding: 0.3125rem 0.875rem;
+  margin: 0 0 0 -0.0625rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+}
+
+.c3 {
+  display: inline-block;
+  border: 0.0625rem solid #004b4d;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: #05171d;
+  color: #828b8e;
+  padding: 0.3125rem 0.875rem;
+  margin: 0 0 0 -0.0625rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+}
+
+<Switch
+  label="Unit: "
+  onChange={[MockFunction]}
+  options={
+    Array [
+      Object {
+        "label": "em",
+        "value": "em",
+      },
+      Object {
+        "label": "rem",
+        "value": "rem",
+      },
+    ]
+  }
+  value="em"
+>
+  <styled.div
+    className="switch"
+  >
+    <div
+      className="c0 switch"
+    >
+      <styled.span
+        className="switch__label"
+      >
+        <span
+          className="c1 switch__label"
+        >
+          Unit:
+        </span>
+      </styled.span>
+      <styled.button
+        className="switch__button"
+        key="em"
+        onClick={[Function]}
+        selected={true}
+      >
+        <button
+          className="c2 switch__button"
+          onClick={[Function]}
+          selected={true}
+        >
+          em
+        </button>
+      </styled.button>
+      <styled.button
+        className="switch__button"
+        key="rem"
+        onClick={[Function]}
+        selected={false}
+      >
+        <button
+          className="c3 switch__button"
+          onClick={[Function]}
+          selected={false}
+        >
+          rem
+        </button>
+      </styled.button>
+    </div>
+  </styled.div>
+</Switch>
+`;

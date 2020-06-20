@@ -31,7 +31,12 @@ const themes = {
       shadowColor: `rgba(${convertHexToRgb(colors.black)}, 0.7)`,
       buttonBackgroundColor: colors.greyTurquoise,
       buttonHoverBackgroundColor: colors.lightGreyTurquoise,
-      buttonTextColor: colors.white
+      buttonTextColor: colors.white,
+      switchButtonBorder: colors.midTurquoise,
+      switchButtonBackgroundColor: colors.blackTurquoise,
+      switchButtonActiveBackgroundColor: colors.midTurquoise,
+      switchButtonTextColor: colors.greyTurquoise,
+      switchButtonActiveTextColor: colors.blackTurquoise
     },
     mediaQueries: {
       ...mediaQueries
