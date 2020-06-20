@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should render 1`] = `
+.c0 {
+  display: inline-block;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: #828b8e;
+  color: #ffffff;
+  padding: 0.625rem 3.75rem;
+  margin: 0 0 1.875rem 0;
+  font-size: 1rem;
+  font-family: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+}
+
+.c0:hover {
+  background-color: #98a2a5;
+}
+
+.c0:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+<Button
+  disabled={false}
+  onClick={[MockFunction]}
+>
+  <styled.button
+    className="action-button"
+    disabled={false}
+    onClick={[MockFunction]}
+    type="button"
+  >
+    <button
+      className="c0 action-button"
+      disabled={false}
+      onClick={[MockFunction]}
+      type="button"
+    >
+      Button Text
+    </button>
+  </styled.button>
+</Button>
+`;

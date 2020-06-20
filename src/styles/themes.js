@@ -28,7 +28,10 @@ const themes = {
       borderColor: colors.midTurquoise,
       messageBackgroundColor: colors.greyTurquoise,
       messageTextColor: colors.white,
-      shadowColor: `rgba(${convertHexToRgb(colors.black)}, 0.7)`
+      shadowColor: `rgba(${convertHexToRgb(colors.black)}, 0.7)`,
+      buttonBackgroundColor: colors.greyTurquoise,
+      buttonHoverBackgroundColor: colors.lightGreyTurquoise,
+      buttonTextColor: colors.white
     },
     mediaQueries: {
       ...mediaQueries
