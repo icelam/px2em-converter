@@ -14,6 +14,6 @@ describe('convertHexToRgb()', () => {
   });
 
   it(`should convert random string "${invalidInput}" to rgb`, () => {
-    expect(convertHexToRgb(invalidInput)).toBe('');
+    expect(convertHexToRgb(invalidInput)).toEqual('');
   });
 });

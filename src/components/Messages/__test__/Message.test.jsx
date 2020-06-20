@@ -64,7 +64,7 @@ describe('Icon', () => {
 describe(('message'), () => {
   it('should render', () => {
     message.success(successMessage);
-    expect(document.querySelectorAll('.message-notification-notice').length).toBe(1);
+    expect(document.querySelectorAll('.message-notification-notice')).toHaveLength(1);
   });
 
   it('should display 3 message at most', () => {
@@ -72,36 +72,36 @@ describe(('message'), () => {
     message.success(successMessage, 10);
     message.success(successMessage, 10);
     message.success(successMessage, 10);
-    expect(document.querySelectorAll('.message-notification-notice').length).toBe(3);
+    expect(document.querySelectorAll('.message-notification-notice')).toHaveLength(3);
   });
 
   it('should trigger success message when calling .success()', () => {
     message.success(successMessage);
-    expect(document.querySelectorAll('.message-notification-notice').length).toBe(3);
+    expect(document.querySelectorAll('.message-notification-notice')).toHaveLength(3);
     expect(document.querySelector('.message-notification-notice:nth-child(3)').textContent).toContain(successMessage);
   });
 
   it('should trigger warning message when calling .warning()', () => {
     message.warn(warnMessage);
-    expect(document.querySelectorAll('.message-notification-notice').length).toBe(3);
+    expect(document.querySelectorAll('.message-notification-notice')).toHaveLength(3);
     expect(document.querySelector('.message-notification-notice:nth-child(3)').textContent).toContain(warnMessage);
   });
 
   it('should trigger info message when calling .info()', () => {
     message.info(infoMessage);
-    expect(document.querySelectorAll('.message-notification-notice').length).toBe(3);
+    expect(document.querySelectorAll('.message-notification-notice')).toHaveLength(3);
     expect(document.querySelector('.message-notification-notice:nth-child(3)').textContent).toContain(infoMessage);
   });
 
   it('should trigger error message when calling .error()', () => {
     message.error(errorMessage);
-    expect(document.querySelectorAll('.message-notification-notice').length).toBe(3);
+    expect(document.querySelectorAll('.message-notification-notice')).toHaveLength(3);
     expect(document.querySelector('.message-notification-notice:nth-child(3)').textContent).toContain(errorMessage);
   });
 
   it('should trigger loading message when calling .loading()', () => {
     message.loading(loadingMessage);
-    expect(document.querySelectorAll('.message-notification-notice').length).toBe(3);
+    expect(document.querySelectorAll('.message-notification-notice')).toHaveLength(3);
     expect(document.querySelector('.message-notification-notice:nth-child(3)').textContent).toContain(loadingMessage);
   });
 });
