@@ -876,6 +876,12 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
+    "src/hooks/__test__/usedebounce.test.jsx",
+    "test-file/src/hooks/__test__/useDebounce.test.jsx.html",
+    "src/hooks/__test__/useDebounce.test.jsx",
+    "testFile"
+  ],
+  [
     "src/hooks/usedebounce.js",
     "file/src/hooks/useDebounce.js.html",
     "src/hooks/useDebounce.js",
@@ -928,5 +934,17 @@ window.esdocSearchIndex = [
     "file/src/utils/validate.utils.js.html",
     "src/utils/validate.utils.js",
     "file"
+  ],
+  [
+    "",
+    "test-file/src/hooks/__test__/useDebounce.test.jsx.html#lineNumber6",
+    "useDebounce()",
+    "test"
+  ],
+  [
+    "",
+    "test-file/src/hooks/__test__/useDebounce.test.jsx.html#lineNumber7",
+    "useDebounce() shoud debounce state",
+    "test"
   ]
 ]
