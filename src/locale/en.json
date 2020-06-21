@@ -6,7 +6,7 @@
   "converter.input.baseFontSize.placeholder": "e.g. 16",
   "converter.input.baseFontSize.errorMessage": "Invalid base font size",
   "converter.input.pixelRange.label": "List of pixels to convert",
-  "converter.input.pixelRange.formatHint": "(Support range input and commoa separator, e.g. 12 - 20, 50, 100)",
+  "converter.input.pixelRange.formatHint": "(Support range input and comma separator, e.g. 12 - 20, 50, 100)",
   "converter.input.pixelRange.placeholder": "e.g. 12 - 20, 50, 100",
   "converter.input.pixelRange.errorMessage": "Invalid format",
   "converter.result.title": "Result",
