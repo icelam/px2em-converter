@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../../">
+  <title data-ice="title">src/components/Inputs/__test__/InputGroup.test.jsx | PX2Em Converter</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="PX2EM is a conversion tool which allows you to calculate the em sizes from pixels. Just add the base font size and the pixels to convert, and you&apos;re done!"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="PX2Em Converter"><meta property="twitter:description" content="PX2EM is a conversion tool which allows you to calculate the em sizes from pixels. Just add the base font size and the pixels to convert, and you&apos;re done!"><meta property="twitter:image" content="./preview.png"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a href="http://github.com/icelam/px2em-converter">Repository</a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#hooks">hooks</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-useDebounce">useDebounce</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-convertHexToRgb">convertHexToRgb</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-convertPixelRangeToArray">convertPixelRangeToArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deduplicateArray">deduplicateArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeExtraSpacesAndCommas">removeExtraSpacesAndCommas</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-roundToNearest">roundToNearest</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sortArrayAscending">sortArrayAscending</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-clearAll">clearAll</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getKey">getKey</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeKey">removeKey</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setKey">setKey</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isValidFontSize">isValidFontSize</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isValidPositiveInteger">isValidPositiveInteger</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/components/Inputs/__test__/InputGroup.test.jsx</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React from &apos;react&apos;;
+import { themes } from &apos;@styles&apos;;
+import { mountWithProvider } from &apos;../../../../jest.utils&apos;;
+import InputGroup from &apos;../InputGroup&apos;;
+
+const id = &apos;input-group-id&apos;;
+const label = &apos;Input label&apos;;
+const placeholder = &apos;Placeholder text&apos;;
+const inputValue = &apos;Some value&apos;;
+const onChange = jest.fn();
+const autoComplete = &apos;off&apos;;
+const maxLength = &apos;15&apos;;
+const error = &apos;Invalid input&apos;;
+
+afterEach(() =&gt; {
+  onChange.mockClear();
+});
+
+describe(&apos;Label&apos;, () =&gt; {
+  it(&apos;should render&apos;, () =&gt; {
+    const wrapper = mountWithProvider(
+      &lt;InputGroup
+        id={id}
+        label={label}
+        placeholder={placeholder}
+        inputValue={inputValue}
+        onChange={onChange}
+      /&gt;
+    );
+    expect(wrapper.find(&apos;div&apos;)).toHaveLength(1);
+    expect(wrapper.find(&apos;div label&apos;)).toHaveLength(1);
+    expect(wrapper.find(&apos;div input&apos;)).toHaveLength(1);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it(&apos;should display correct label text and have correct &quot;for&quot; attribute&apos;, () =&gt; {
+    const wrapper = mountWithProvider(
+      &lt;InputGroup
+        id={id}
+        label={label}
+        placeholder={placeholder}
+        inputValue={inputValue}
+        onChange={onChange}
+      /&gt;
+    );
+    expect(wrapper.find(&apos;div.input-group label&apos;).text()).toEqual(label);
+    expect(wrapper.find(&apos;div.input-group label&apos;).props().htmlFor).toEqual(id);
+  });
+
+  it(&apos;should display input box with placeholder and value&apos;, () =&gt; {
+    const wrapper = mountWithProvider(
+      &lt;InputGroup
+        id={id}
+        label={label}
+        placeholder={placeholder}
+        inputValue={inputValue}
+        onChange={onChange}
+      /&gt;
+    );
+    expect(wrapper.find(&apos;div.input-group input&apos;).props().value).toEqual(inputValue);
+    expect(wrapper.find(&apos;div.input-group input&apos;).props().placeholder).toEqual(placeholder);
+  });
+
+  it(&apos;should spread extra props to input&apos;, () =&gt; {
+    const wrapper = mountWithProvider(
+      &lt;InputGroup
+        id={id}
+        label={label}
+        placeholder={placeholder}
+        inputValue={inputValue}
+        onChange={onChange}
+        autoComplete={autoComplete}
+        maxLength={maxLength}
+      /&gt;
+    );
+    expect(wrapper.find(&apos;div.input-group input&apos;).props().autoComplete).toEqual(autoComplete);
+    expect(wrapper.find(&apos;div.input-group input&apos;).props().maxLength).toEqual(maxLength);
+  });
+
+  it(&apos;should show error message and red border on input when field value is invalid&apos;, () =&gt; {
+    const wrapper = mountWithProvider(
+      &lt;InputGroup
+        id={id}
+        label={label}
+        placeholder={placeholder}
+        inputValue={inputValue}
+        onChange={onChange}
+        error={error}
+      /&gt;
+    );
+    expect(wrapper.find(&apos;div.input-group div.error-message&apos;)).toHaveLength(1);
+    expect(wrapper.find(&apos;div.input-group div.error-message&apos;).text()).toEqual(error);
+    expect(wrapper.find(&apos;div.input-group input&apos;)).toHaveStyleRule(
+      &apos;border&apos;, `0.0625rem solid ${themes.dark.color.errorColor}`
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it(&apos;should render with onChange listener&apos;, () =&gt; {
+    const wrapper = mountWithProvider(
+      &lt;InputGroup
+        id={id}
+        label={label}
+        placeholder={placeholder}
+        inputValue={inputValue}
+        onChange={onChange}
+      /&gt;
+    );
+    wrapper.find(&apos;div.input-group input&apos;).simulate(&apos;change&apos;);
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

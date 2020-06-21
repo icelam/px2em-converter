@@ -10,6 +10,7 @@
 [![Storybook](https://img.shields.io/badge/Storybook-5.3-ff4785.svg?logo=Storybook&logoColor=white&style=flat)](https://storybook.js.org/)
 [![Jest](https://img.shields.io/badge/test_with-Jest-15c213.svg?logo=Jest&style=flat)](https://jestjs.io/)
 [![Enzyme](https://img.shields.io/badge/test_with-Enzyme-ff385c.svg?style=flat)](https://enzymejs.github.io/enzyme/)
+[![ESDoc](https://img.shields.io/badge/document_with-ESDoc-e55151.svg?style=flat)](https://esdoc.org/)
 [![Build](https://github.com/icelam/px2em-converter/workflows/Build/badge.svg)](https://github.com/icelam/px2em-converter/actions?query=workflow%3ABuild)
 [![Unit Test](https://github.com/icelam/px2em-converter/workflows/Unit%20test/badge.svg)](https://github.com/icelam/px2em-converter/actions?query=workflow%3A%22Unit+test%22)
 [![codecov](https://codecov.io/gh/icelam/px2em-converter/branch/master/graph/badge.svg)](https://codecov.io/gh/icelam/px2em-converter)
