@@ -39,6 +39,7 @@ export const InputGroupWithErrorStory = () => {
       }}
       autoComplete="off"
       maxLength="15"
+      error="Invalid format"
     />
   );
 };
