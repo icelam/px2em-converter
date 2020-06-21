@@ -29,6 +29,11 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.5.0",
+    "esdoc": "^1.1.0",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-jsx-plugin": "^1.0.0",
+    "esdoc-standard-plugin": "^1.0.0",
+    "esdoc-unexported-identifier-plugin": "^1.0.0",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-import-resolver-alias": "^1.1.2",
@@ -56,7 +61,8 @@
     "lint": "eslint --ext .js,.jsx src",
     "lint:css": "stylelint './src/**/*.js'",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public --output-dir docs/storybook",
+    "esdoc": "./node_modules/.bin/esdoc"
   },
   "jest": {
     "setupFiles": [

@@ -1,0 +1,44 @@
+{
+  "source": "./src",
+  "includes": ["hooks", "utils"],
+  "excludes": ["index.js", "__test__"],
+  "destination": "./docs/esdoc",
+  "index": "CHANGELOG.md",
+  "plugins": [
+    {
+      "name": "esdoc-unexported-identifier-plugin",
+      "option": {
+        "enable": true
+      }
+    },
+    {
+      "name": "esdoc-ecmascript-proposal-plugin",
+      "option": {
+        "all": true
+      }
+    },
+    {
+      "name": "esdoc-jsx-plugin",
+      "option": {
+        "enable": true
+      }
+    },
+    {
+      "name": "esdoc-standard-plugin",
+      "option": {
+        "brand": {
+          "logo": "public/static/media/touch-icons/apple-touch-icon-1024x1024.png",
+          "title": "PX2Em Converter",
+          "description": "PX2EM is a conversion tool which allows you to calculate the em sizes from pixels. Just add the base font size and the pixels to convert, and you're done!",
+          "repository": "http://github.com/icelam/px2em-converter",
+          "author": "http://github.com/icelam",
+          "image": "./preview.png"
+        },
+        "test": {
+          "source": "./src",
+          "includes": ["(spec|test)\\.js$", "(spec|test)\\.jsx$"]
+        }
+      }
+    }
+  ]
+}

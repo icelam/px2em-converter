@@ -1,3 +1,8 @@
+/**
+ * Coverts any HEX color code to RGB
+ * @param {string} color - HEX color
+ * @returns {string} RGB value
+ */
 const convertHexToRgb = (color) => {
   const colorCode = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(color.toLowerCase());
 

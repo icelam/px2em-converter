@@ -1,5 +1,11 @@
 import { isValidPositiveInteger } from './validate.utils';
 
+/**
+ * Coverts any HEX color code to RGB
+ * @param {number} value - Interger / floating point value that needs to be rounded
+ * @param {number} precision - Number of decimal places
+ * @returns {number} Rounded floating point value
+ */
 export const roundToNearest = (value, precision) => {
   if (!Number.isInteger(precision)) {
     return value;
@@ -8,6 +14,11 @@ export const roundToNearest = (value, precision) => {
   return parseFloat(value.toFixed(precision));
 };
 
+/**
+ * Deduplicates any array
+ * @param {array} arr - Array to be deduplicated
+ * @returns {array} Deduplicated array If `arr` provided is not an array, returns an empty array
+ */
 export const deduplicateArray = (arr) => {
   if (!Array.isArray(arr)) {
     return [];
@@ -17,16 +28,32 @@ export const deduplicateArray = (arr) => {
   return Array.from(arraySet);
 };
 
+/**
+ * Remove multiple consecutive spaces, trialing space and comma
+ * @param {string} str - String to process
+ * @returns {string} String which its multiple consecutive spaces,
+ * trialing space and comma are removed
+ */
 export const removeExtraSpacesAndCommas = (str) => str
   .replace(/\s+/g, ' ')
   .replace(/\s$/, '')
   .replace(/,$/, '');
 
+/**
+ * Sort array in ascending order
+ * @param {array} arr - Array to sort
+ * @returns {array} Array sorted in ascending order
+ */
 const sortArrayAscending = (arr) => {
   const newArray = [...arr];
   return newArray.sort((a, b) => a - b);
 };
 
+/**
+ * Convert pixel range to list of pixels
+ * @param {string} str - Pixel range, e.g. `"12 - 20, 50, 100"`
+ * @returns {array} List of pixels, e.g. `[12, 13, 14, 15, 16, 17, 18, 19, 20, 50, 100]``
+ */
 export const convertPixelRangeToArray = (str) => {
   try {
     const pixels = [];
