@@ -52,14 +52,17 @@ Run `yarn start` in project root folder.
 ### To build production ###
 Run `yarn run build` in project root folder.
 
+### To run unit tests ###
+Run `yarn test` in the project root folder.
+
 ### To start Storybook ###
 Run `yarn storybook` in project root folder.
 
 ### To build Storybook ###
-Run `yarn build-storybook` in project root folder.
+Run `yarn build-storybook` in project root folder. Output can be found at `docs/storybook`.
 
-### To run unit tests ###
-Run `yarn test` in the project root folder.
+### To build ESDoc ###
+Run `yarn esdoc` in project root folder. Output can be found at `docs/esdoc`.
 
 ## Configurations ##
 Below shows some available configuration options.
