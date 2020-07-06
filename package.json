@@ -61,7 +61,6 @@
     "first-release": "standard-version --commit-all --tag-prefix v --first-release",
     "release": "standard-version --commit-all --tag-prefix v",
     "lint": "eslint --ext .js,.jsx src",
-    "lint:css": "stylelint './src/**/*.js'",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public --output-dir docs/storybook",
     "esdoc": "./node_modules/.bin/esdoc"
