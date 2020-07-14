@@ -12,11 +12,11 @@ describe('useDebounce()', () => {
     act(() => {
       rerender({ value: 10 });
     });
-    expect(result.current).toBe(0);
+    expect(result.current).toEqual(0);
 
     act(() => {
       jest.runOnlyPendingTimers();
     });
-    expect(result.current).toBe(10);
+    expect(result.current).toEqual(10);
   });
 });
