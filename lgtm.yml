@@ -2,5 +2,5 @@ extraction:
   javascript:
     index:
       exclude:
-        - src/build/**/*
-        - src/docs/**/*
+        - build
+        - docs
