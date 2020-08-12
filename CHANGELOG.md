@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/icelam/px2em-converter/compare/v1.1.1...v1.1.2) (2020-08-12)
+
+
+### Bug Fixes
+
+* make selected switch text to have a higher contrast ([80cd01e](https://github.com/icelam/px2em-converter/commit/80cd01ea1511701a083e16397955e5e2ee04a7e6))
+
 ### [1.1.1](https://github.com/icelam/px2em-converter/compare/v1.1.0...v1.1.1) (2020-06-21)
 
 
