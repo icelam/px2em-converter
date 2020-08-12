@@ -36,7 +36,7 @@ const themes = {
       switchButtonBackgroundColor: colors.blackTurquoise,
       switchButtonActiveBackgroundColor: colors.midTurquoise,
       switchButtonTextColor: colors.greyTurquoise,
-      switchButtonActiveTextColor: colors.blackTurquoise
+      switchButtonActiveTextColor: colors.white
     },
     mediaQueries: {
       ...mediaQueries

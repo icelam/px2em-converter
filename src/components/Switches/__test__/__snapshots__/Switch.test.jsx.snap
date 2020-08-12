@@ -112,7 +112,7 @@ exports[`Switch should be able to highlight selected value 1`] = `
   border-radius: 0;
   box-shadow: none;
   background-color: #004b4d;
-  color: #05171d;
+  color: #ffffff;
   padding: 0.3125rem 0.875rem;
   margin: 0 0 0 -0.0625rem;
   font-size: 0.875rem;
@@ -312,7 +312,7 @@ exports[`Switch should render 1`] = `
   border-radius: 0;
   box-shadow: none;
   background-color: #004b4d;
-  color: #05171d;
+  color: #ffffff;
   padding: 0.3125rem 0.875rem;
   margin: 0 0 0 -0.0625rem;
   font-size: 0.875rem;
