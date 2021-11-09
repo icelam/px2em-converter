@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../src/assets/fonts/SourceCodePro-Regular/SourceCodePro-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('../src/assets/fonts/SourceCodePro-Regular/SourceCodePro-Regular.woff')
+      format('woff'),
+    url('../src/assets/fonts/SourceCodePro-Regular/SourceCodePro-Regular.ttf')
+      format('truetype');
+}
+
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../src/assets/fonts/SourceCodePro-SemiBold/SourceCodePro-SemiBold.eot?#iefix')
+      format('embedded-opentype'),
+    url('../src/assets/fonts/SourceCodePro-SemiBold/SourceCodePro-SemiBold.woff')
+      format('woff'),
+    url('../src/assets/fonts/SourceCodePro-SemiBold/SourceCodePro-SemiBold.ttf')
+      format('truetype');
+}
+
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../src/assets/fonts/SourceCodePro-Bold/SourceCodePro-Bold.eot?#iefix')
+      format('embedded-opentype'),
+    url('../src/assets/fonts/SourceCodePro-Bold/SourceCodePro-Bold.woff') format('woff'),
+    url('../src/assets/fonts/SourceCodePro-Bold/SourceCodePro-Bold.ttf') format('truetype');
+}

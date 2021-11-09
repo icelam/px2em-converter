@@ -1,6 +1,12 @@
 import { create } from '@storybook/theming/create';
 import logo from '../public/static/media/touch-icons/apple-touch-icon-1024x1024.png';
 
+// import global fonts for theming storybook
+// https://github.com/storybookjs/storybook/issues/25#issuecomment-609443373
+// eslint-disable-next-line import/no-unresolved, import/no-webpack-loader-syntax
+// FIXME: read directly from src folder and resolve aliases
+import '!style-loader!css-loader!./font-face.css';
+
 const colors = {
   blackTurquoise: '#05171d',
   darkTurquoise: '#023135',
