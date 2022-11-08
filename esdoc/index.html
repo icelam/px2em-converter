@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">Home | PX2EM Converter</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="PX2EM is a conversion tool which allows you to calculate the em sizes from pixels. Just add the base font size and the pixels to convert, and you&apos;re done!"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="PX2EM Converter"><meta property="twitter:description" content="PX2EM is a conversion tool which allows you to calculate the em sizes from pixels. Just add the base font size and the pixels to convert, and you&apos;re done!"><meta property="twitter:image" content="./preview.png"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a href="http://github.com/icelam/px2em-converter">Repository</a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#hooks">hooks</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-useDebounce">useDebounce</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-convertHexToRgb">convertHexToRgb</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-convertPixelRangeToArray">convertPixelRangeToArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deduplicateArray">deduplicateArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeExtraSpacesAndCommas">removeExtraSpacesAndCommas</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-roundToNearest">roundToNearest</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sortArrayAscending">sortArrayAscending</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-clearAll">clearAll</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getKey">getKey</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeKey">removeKey</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setKey">setKey</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isValidFontSize">isValidFontSize</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isValidPositiveInteger">isValidPositiveInteger</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="changelog">Changelog</h1><h3 id="-a-href--https---github-com-icelam-px2em-converter-compare-v1-1-1---v1-1-2--1-1-2--a---2020-08-12-"><a href="https://github.com/icelam/px2em-converter/compare/v1.1.1...v1.1.2">1.1.2</a> (2020-08-12)</h3><h3 id="bug-fixes">Bug Fixes</h3><ul>
+<li>make selected switch text to have a higher contrast (<a href="https://github.com/icelam/px2em-converter/commit/80cd01ea1511701a083e16397955e5e2ee04a7e6">80cd01e</a>)</li>
+</ul>
+<h3 id="-a-href--https---github-com-icelam-px2em-converter-compare-v1-1-0---v1-1-1--1-1-1--a---2020-06-21-"><a href="https://github.com/icelam/px2em-converter/compare/v1.1.0...v1.1.1">1.1.1</a> (2020-06-21)</h3><h3 id="bug-fixes">Bug Fixes</h3><ul>
+<li>typo in pixel range input label (<a href="https://github.com/icelam/px2em-converter/commit/8d11ea2eca2ca698e59502ec6679473d393dce26">8d11ea2</a>)</li>
+</ul>
+<h2 id="-a-href--https---github-com-icelam-px2em-converter-compare-v1-0-0---v1-1-0--1-1-0--a---2020-06-20-"><a href="https://github.com/icelam/px2em-converter/compare/v1.0.0...v1.1.0">1.1.0</a> (2020-06-20)</h2><h3 id="features">Features</h3><ul>
+<li>add ability to switch display unit (<a href="https://github.com/icelam/px2em-converter/commit/da5799454bf50fed0a0c97a65830773ccc7d7ce6">da57994</a>)</li>
+<li>add button component (<a href="https://github.com/icelam/px2em-converter/commit/d29efceecdb953255c6db0903b3a34267a0f24dc">d29efce</a>)</li>
+</ul>
+<h2 id="1-0-0--2020-06-19-">1.0.0 (2020-06-19)</h2><h3 id="features">Features</h3><ul>
+<li>px2em converter (<a href="https://github.com/icelam/px2em-converter/commit/773b3286130444894a37e02aa4179e8006be9679">773b328</a>)</li>
+</ul>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

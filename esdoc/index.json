@@ -1,0 +1,2368 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "name": "src/hooks/useDebounce.js",
+    "content": "import { useState, useEffect } from 'react';\n\n/**\n * A hook which used for debounce states for a certain amount of time(ms)\n * @param {*} value - state value\n * @param {number} delay - debounce in milliseconds\n * @returns {*} latest value of state\n */\nconst useDebounce = (value, delay) => {\n  const [debouncedValue, setDebouncedValue] = useState(value);\n\n  useEffect(\n    () => {\n      const handler = setTimeout(() => {\n        setDebouncedValue(value);\n      }, delay);\n\n      return () => {\n        clearTimeout(handler);\n      };\n    },\n    [value, delay]\n  );\n\n  return debouncedValue;\n};\n\nexport default useDebounce;\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/hooks/useDebounce.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 1,
+    "kind": "function",
+    "name": "useDebounce",
+    "memberof": "src/hooks/useDebounce.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/hooks/useDebounce.js~useDebounce",
+    "access": "public",
+    "export": true,
+    "importPath": "px2em-converter/src/hooks/useDebounce.js",
+    "importStyle": "useDebounce",
+    "description": "A hook which used for debounce states for a certain amount of time(ms)",
+    "lineNumber": 9,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{*} latest value of state"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "state value"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "delay",
+        "description": "debounce in milliseconds"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "latest value of state"
+    }
+  },
+  {
+    "__docId__": 2,
+    "kind": "file",
+    "name": "src/utils/color.utils.js",
+    "content": "/**\n * Coverts any HEX color code to RGB\n * @param {string} color - HEX color\n * @returns {string} RGB value\n */\nconst convertHexToRgb = (color) => {\n  const colorCode = /^#?([a-f\\d]{2})([a-f\\d]{2})([a-f\\d]{2})$/i.exec(color.toLowerCase());\n\n  return colorCode\n    ? `${parseInt(colorCode[1], 16)}, ${parseInt(colorCode[2], 16)}, ${parseInt(colorCode[3], 16)}`\n    : '';\n};\n\nexport default convertHexToRgb;\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/utils/color.utils.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 3,
+    "kind": "function",
+    "name": "convertHexToRgb",
+    "memberof": "src/utils/color.utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/color.utils.js~convertHexToRgb",
+    "access": "public",
+    "export": true,
+    "importPath": "px2em-converter/src/utils/color.utils.js",
+    "importStyle": "convertHexToRgb",
+    "description": "Coverts any HEX color code to RGB",
+    "lineNumber": 6,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{string} RGB value"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "color",
+        "description": "HEX color"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "RGB value"
+    }
+  },
+  {
+    "__docId__": 4,
+    "kind": "file",
+    "name": "src/utils/format.utils.js",
+    "content": "import { isValidPositiveInteger } from './validate.utils';\n\n/**\n * Coverts any HEX color code to RGB\n * @param {number} value - Interger / floating point value that needs to be rounded\n * @param {number} precision - Number of decimal places\n * @returns {number} Rounded floating point value\n */\nexport const roundToNearest = (value, precision) => {\n  if (!Number.isInteger(precision)) {\n    return value;\n  }\n  // parseFloat for trimming trailing zeros\n  return parseFloat(value.toFixed(precision));\n};\n\n/**\n * Deduplicates any array\n * @param {array} arr - Array to be deduplicated\n * @returns {array} Deduplicated array If `arr` provided is not an array, returns an empty array\n */\nexport const deduplicateArray = (arr) => {\n  if (!Array.isArray(arr)) {\n    return [];\n  }\n\n  const arraySet = new Set(arr);\n  return Array.from(arraySet);\n};\n\n/**\n * Remove multiple consecutive spaces, trialing space and comma\n * @param {string} str - String to process\n * @returns {string} String which its multiple consecutive spaces,\n * trialing space and comma are removed\n */\nexport const removeExtraSpacesAndCommas = (str) => str\n  .replace(/\\s+/g, ' ')\n  .replace(/\\s$/, '')\n  .replace(/,$/, '');\n\n/**\n * Sort array in ascending order\n * @param {array} arr - Array to sort\n * @returns {array} Array sorted in ascending order\n */\nconst sortArrayAscending = (arr) => {\n  const newArray = [...arr];\n  return newArray.sort((a, b) => a - b);\n};\n\n/**\n * Convert pixel range to list of pixels\n * @param {string} str - Pixel range, e.g. `\"12 - 20, 50, 100\"`\n * @returns {array} List of pixels, e.g. `[12, 13, 14, 15, 16, 17, 18, 19, 20, 50, 100]``\n */\nexport const convertPixelRangeToArray = (str) => {\n  try {\n    const pixels = [];\n\n    if (!str) {\n      throw new Error('EMPTY_INPUT');\n    }\n\n    const formattedString = removeExtraSpacesAndCommas(str);\n    const rangeItems = formattedString.split(',');\n\n    rangeItems.forEach((item) => {\n      let currentDigit = '';\n      const operations = [];\n\n      const pushDigit = () => {\n        operations.push(currentDigit);\n        currentDigit = '';\n      };\n\n      /**\n       * Parse string to operations:\n       *  - \"11\" to [\"11\"]\n       *  - \"11 - 13\" to [\"11\", \"-\", \"13\"]\n       *  - \"1-3\" to [\"1\", \"-\", \"1\"]\n       */\n      for (let i = 0; i < item.length; i++) {\n        if (item[i] === ' ') {\n          currentDigit && pushDigit();\n        } else if (isValidPositiveInteger(item[i])) {\n          currentDigit += item[i];\n        } else if (item[i] === '-') {\n          currentDigit && pushDigit();\n          operations.push('-');\n        } else {\n          throw new Error('INVALID_INPUT');\n        }\n      }\n\n      currentDigit && pushDigit();\n\n      /**\n       * Convert operations to pixels:\n       *  - Valid Case 1: Single positive integer\n       *  - Valid Case 2: Pixel range (e.g. 1-10)\n       */\n      if (operations.length !== 1 && operations.length !== 3) {\n        throw new Error('INVALID_OPERATION_LENGTH');\n      }\n\n      if (operations.length === 1) {\n        if (isValidPositiveInteger(operations[0])) {\n          pixels.push(parseInt(operations[0], 10));\n        } else {\n          throw new Error('INVALID_NUMBER');\n        }\n      } else {\n        const [leftString, operator, rightString] = operations;\n        if (isValidPositiveInteger(leftString) && operator === '-' && isValidPositiveInteger(rightString)) {\n          const leftNumber = parseInt(leftString, 10);\n          const rightNumber = parseInt(rightString, 10);\n          if (leftNumber <= rightNumber) {\n            for (let i = leftNumber; i <= rightNumber; i++) {\n              pixels.push(parseInt(i, 10));\n            }\n          } else {\n            throw new Error('INVALID_RANGE');\n          }\n        } else {\n          throw new Error('INVALID_OPERATION');\n        }\n      }\n    });\n\n    const uniquePixels = deduplicateArray(pixels);\n    const sortedPixels = sortArrayAscending(uniquePixels);\n    return sortedPixels;\n  } catch (error) {\n    return [];\n  }\n};\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/utils/format.utils.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 5,
+    "kind": "function",
+    "name": "roundToNearest",
+    "memberof": "src/utils/format.utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/format.utils.js~roundToNearest",
+    "access": "public",
+    "export": true,
+    "importPath": "px2em-converter/src/utils/format.utils.js",
+    "importStyle": "{roundToNearest}",
+    "description": "Coverts any HEX color code to RGB",
+    "lineNumber": 9,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{number} Rounded floating point value"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "Interger / floating point value that needs to be rounded"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "precision",
+        "description": "Number of decimal places"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": "Rounded floating point value"
+    }
+  },
+  {
+    "__docId__": 6,
+    "kind": "function",
+    "name": "deduplicateArray",
+    "memberof": "src/utils/format.utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/format.utils.js~deduplicateArray",
+    "access": "public",
+    "export": true,
+    "importPath": "px2em-converter/src/utils/format.utils.js",
+    "importStyle": "{deduplicateArray}",
+    "description": "Deduplicates any array",
+    "lineNumber": 22,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{array} Deduplicated array If `arr` provided is not an array, returns an empty array"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "arr",
+        "description": "Array to be deduplicated"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "array"
+      ],
+      "spread": false,
+      "description": "Deduplicated array If `arr` provided is not an array, returns an empty array"
+    }
+  },
+  {
+    "__docId__": 7,
+    "kind": "function",
+    "name": "removeExtraSpacesAndCommas",
+    "memberof": "src/utils/format.utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/format.utils.js~removeExtraSpacesAndCommas",
+    "access": "public",
+    "export": true,
+    "importPath": "px2em-converter/src/utils/format.utils.js",
+    "importStyle": "{removeExtraSpacesAndCommas}",
+    "description": "Remove multiple consecutive spaces, trialing space and comma",
+    "lineNumber": 37,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{string} String which its multiple consecutive spaces,\ntrialing space and comma are removed"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "str",
+        "description": "String to process"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "String which its multiple consecutive spaces,\ntrialing space and comma are removed"
+    }
+  },
+  {
+    "__docId__": 8,
+    "kind": "function",
+    "name": "sortArrayAscending",
+    "memberof": "src/utils/format.utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/format.utils.js~sortArrayAscending",
+    "access": "public",
+    "export": false,
+    "importPath": "px2em-converter/src/utils/format.utils.js",
+    "importStyle": null,
+    "description": "Sort array in ascending order",
+    "lineNumber": 47,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{array} Array sorted in ascending order"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "arr",
+        "description": "Array to sort"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "array"
+      ],
+      "spread": false,
+      "description": "Array sorted in ascending order"
+    }
+  },
+  {
+    "__docId__": 9,
+    "kind": "function",
+    "name": "convertPixelRangeToArray",
+    "memberof": "src/utils/format.utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/format.utils.js~convertPixelRangeToArray",
+    "access": "public",
+    "export": true,
+    "importPath": "px2em-converter/src/utils/format.utils.js",
+    "importStyle": "{convertPixelRangeToArray}",
+    "description": "Convert pixel range to list of pixels",
+    "lineNumber": 57,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{array} List of pixels, e.g. `[12, 13, 14, 15, 16, 17, 18, 19, 20, 50, 100]``"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "str",
+        "description": "Pixel range, e.g. `\"12 - 20, 50, 100\"`"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "array"
+      ],
+      "spread": false,
+      "description": "List of pixels, e.g. `[12, 13, 14, 15, 16, 17, 18, 19, 20, 50, 100]``"
+    }
+  },
+  {
+    "__docId__": 10,
+    "kind": "file",
+    "name": "src/utils/storage.utils.js",
+    "content": "/**\n * Store data to local storage when key is provided\n * @param {string} key - Local storage key which specifies where the data to be stored\n * @param {*} data - Data to store to local storage\n */\nconst setKey = (key, data) => {\n  if (!key) { return; }\n  window.localStorage.setItem(key, data);\n};\n\n/**\n * Get the data stored in specific key of local storage\n * @property {function()} localStorageUtils - Helpers for interacting with local storage\n * @param {string} key - Local storage key which specifies where the data to be stored\n * @returns {string} Data stored in `key` of local storage\n */\nconst getKey = (key) => window.localStorage.getItem(key);\n\n/**\n * Remove the data stored in specific key of local storage\n * @param {string} key - Local storage key which specifies where the data to be stored\n */\nconst removeKey = (key) => {\n  window.localStorage.removeItem(key);\n};\n\n/**\n * Clear all data stored in local storage\n */\nconst clearAll = () => {\n  window.localStorage.clear();\n};\n\nexport default {\n  setKey,\n  getKey,\n  removeKey,\n  clearAll\n};\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/utils/storage.utils.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 11,
+    "kind": "function",
+    "name": "setKey",
+    "memberof": "src/utils/storage.utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/storage.utils.js~setKey",
+    "access": "public",
+    "export": false,
+    "importPath": "px2em-converter/src/utils/storage.utils.js",
+    "importStyle": null,
+    "description": "Store data to local storage when key is provided",
+    "lineNumber": 6,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": "Local storage key which specifies where the data to be stored"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "data",
+        "description": "Data to store to local storage"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 12,
+    "kind": "function",
+    "name": "getKey",
+    "memberof": "src/utils/storage.utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/storage.utils.js~getKey",
+    "access": "public",
+    "export": false,
+    "importPath": "px2em-converter/src/utils/storage.utils.js",
+    "importStyle": null,
+    "description": "Get the data stored in specific key of local storage",
+    "lineNumber": 17,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{string} Data stored in `key` of local storage"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": "Local storage key which specifies where the data to be stored"
+      }
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "function()"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "localStorageUtils",
+        "description": "Helpers for interacting with local storage"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "Data stored in `key` of local storage"
+    }
+  },
+  {
+    "__docId__": 13,
+    "kind": "function",
+    "name": "removeKey",
+    "memberof": "src/utils/storage.utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/storage.utils.js~removeKey",
+    "access": "public",
+    "export": false,
+    "importPath": "px2em-converter/src/utils/storage.utils.js",
+    "importStyle": null,
+    "description": "Remove the data stored in specific key of local storage",
+    "lineNumber": 23,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": "Local storage key which specifies where the data to be stored"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 14,
+    "kind": "function",
+    "name": "clearAll",
+    "memberof": "src/utils/storage.utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/storage.utils.js~clearAll",
+    "access": "public",
+    "export": false,
+    "importPath": "px2em-converter/src/utils/storage.utils.js",
+    "importStyle": null,
+    "description": "Clear all data stored in local storage",
+    "lineNumber": 30,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 15,
+    "kind": "file",
+    "name": "src/utils/validate.utils.js",
+    "content": "/**\n * Validate if user input is a positive integer\n * @param {string} str - User input\n * @returns {boolean} `true` for positive integers, `false` for negative integers and other inputs\n */\nexport const isValidPositiveInteger = (str) => {\n  const re = /^\\d+$/;\n  return re.test(str);\n};\n\n/**\n * Validate if user input is a valid font size\n * @param {string} str - User input\n * @returns {boolean} `true` for decimal and integer values, `false` for other inputs\n */\nexport const isValidFontSize = (str) => {\n  const re = /^[0-9]+(\\.[0-9]+)?$/;\n  return re.test(str);\n};\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/utils/validate.utils.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 16,
+    "kind": "function",
+    "name": "isValidPositiveInteger",
+    "memberof": "src/utils/validate.utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/validate.utils.js~isValidPositiveInteger",
+    "access": "public",
+    "export": true,
+    "importPath": "px2em-converter/src/utils/validate.utils.js",
+    "importStyle": "{isValidPositiveInteger}",
+    "description": "Validate if user input is a positive integer",
+    "lineNumber": 6,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean} `true` for positive integers, `false` for negative integers and other inputs"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "str",
+        "description": "User input"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": "`true` for positive integers, `false` for negative integers and other inputs"
+    }
+  },
+  {
+    "__docId__": 17,
+    "kind": "function",
+    "name": "isValidFontSize",
+    "memberof": "src/utils/validate.utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/validate.utils.js~isValidFontSize",
+    "access": "public",
+    "export": true,
+    "importPath": "px2em-converter/src/utils/validate.utils.js",
+    "importStyle": "{isValidFontSize}",
+    "description": "Validate if user input is a valid font size",
+    "lineNumber": 16,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean} `true` for decimal and integer values, `false` for other inputs"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "str",
+        "description": "User input"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": "`true` for decimal and integer values, `false` for other inputs"
+    }
+  },
+  {
+    "kind": "index",
+    "content": "# Changelog\n\n### [1.1.2](https://github.com/icelam/px2em-converter/compare/v1.1.1...v1.1.2) (2020-08-12)\n\n\n### Bug Fixes\n\n* make selected switch text to have a higher contrast ([80cd01e](https://github.com/icelam/px2em-converter/commit/80cd01ea1511701a083e16397955e5e2ee04a7e6))\n\n### [1.1.1](https://github.com/icelam/px2em-converter/compare/v1.1.0...v1.1.1) (2020-06-21)\n\n\n### Bug Fixes\n\n* typo in pixel range input label ([8d11ea2](https://github.com/icelam/px2em-converter/commit/8d11ea2eca2ca698e59502ec6679473d393dce26))\n\n## [1.1.0](https://github.com/icelam/px2em-converter/compare/v1.0.0...v1.1.0) (2020-06-20)\n\n\n### Features\n\n* add ability to switch display unit ([da57994](https://github.com/icelam/px2em-converter/commit/da5799454bf50fed0a0c97a65830773ccc7d7ce6))\n* add button component ([d29efce](https://github.com/icelam/px2em-converter/commit/d29efceecdb953255c6db0903b3a34267a0f24dc))\n\n## 1.0.0 (2020-06-19)\n\n\n### Features\n\n* px2em converter ([773b328](https://github.com/icelam/px2em-converter/commit/773b3286130444894a37e02aa4179e8006be9679))\n",
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/CHANGELOG.md",
+    "name": "CHANGELOG.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "__docId__": 18,
+    "kind": "testFile",
+    "name": "src/components/Buttons/__test__/Button.test.jsx",
+    "content": "import React from 'react';\nimport { mountWithProvider } from '../../../../jest.utils';\nimport Button from '../Button';\n\nconst buttonText = 'Button Text';\nconst disabledButtonText = 'Disabled Button Text';\nconst clickFunction = jest.fn();\n\nafterEach(() => {\n  clickFunction.mockClear();\n});\n\ndescribe('Button', () => {\n  it('should render', () => {\n    const wrapper = mountWithProvider(<Button onClick={clickFunction}>{buttonText}</Button>);\n    expect(wrapper.find('button.action-button')).toHaveLength(1);\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should display button with button text', () => {\n    const wrapper = mountWithProvider(<Button onClick={clickFunction}>{buttonText}</Button>);\n    expect(wrapper.find('button.action-button').text()).toEqual(buttonText);\n    expect(wrapper.find('button.action-button')).not.toHaveStyleRule('opacity', '0,5');\n    expect(wrapper.find('button.action-button')).toHaveStyleRule('cursor', 'pointer');\n  });\n\n  it('should display disabled button with button text', () => {\n    const wrapper = mountWithProvider(\n      <Button onClick={clickFunction} disabled>{disabledButtonText}</Button>\n    );\n    expect(wrapper.find('button.action-button').text()).toEqual(disabledButtonText);\n    expect(wrapper.find('button.action-button')).toHaveStyleRule('opacity', '0.5', { modifier: ':disabled' });\n    expect(wrapper.find('button.action-button')).toHaveStyleRule('cursor', 'not-allowed', { modifier: ':disabled' });\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should trigger function when clicking on button', () => {\n    const wrapper = mountWithProvider(\n      <Button onClick={clickFunction}>{buttonText}</Button>\n    );\n    wrapper.find('button.action-button').simulate('click');\n    expect(clickFunction).toHaveBeenCalledTimes(1);\n  });\n\n  it('should not trigger function when clicking on disabled button', () => {\n    const wrapper = mountWithProvider(\n      <Button onClick={clickFunction} disabled>{disabledButtonText}</Button>\n    );\n    wrapper.find('button.action-button').simulate('click');\n    expect(clickFunction).toHaveBeenCalledTimes(0);\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/components/Buttons/__test__/Button.test.jsx",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 19,
+    "kind": "test",
+    "name": "describe0",
+    "testId": 0,
+    "memberof": "src/components/Buttons/__test__/Button.test.jsx",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/components/Buttons/__test__/Button.test.jsx~describe0",
+    "access": null,
+    "description": "Button",
+    "lineNumber": 13
+  },
+  {
+    "__docId__": 20,
+    "kind": "test",
+    "name": "it1",
+    "testId": 1,
+    "memberof": "src/components/Buttons/__test__/Button.test.jsx~describe0",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Buttons/__test__/Button.test.jsx~describe0.it1",
+    "access": null,
+    "description": "should render",
+    "lineNumber": 14
+  },
+  {
+    "__docId__": 21,
+    "kind": "test",
+    "name": "it2",
+    "testId": 2,
+    "memberof": "src/components/Buttons/__test__/Button.test.jsx~describe0",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Buttons/__test__/Button.test.jsx~describe0.it2",
+    "access": null,
+    "description": "should display button with button text",
+    "lineNumber": 20
+  },
+  {
+    "__docId__": 22,
+    "kind": "test",
+    "name": "it3",
+    "testId": 3,
+    "memberof": "src/components/Buttons/__test__/Button.test.jsx~describe0",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Buttons/__test__/Button.test.jsx~describe0.it3",
+    "access": null,
+    "description": "should display disabled button with button text",
+    "lineNumber": 27
+  },
+  {
+    "__docId__": 23,
+    "kind": "test",
+    "name": "it4",
+    "testId": 4,
+    "memberof": "src/components/Buttons/__test__/Button.test.jsx~describe0",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Buttons/__test__/Button.test.jsx~describe0.it4",
+    "access": null,
+    "description": "should trigger function when clicking on button",
+    "lineNumber": 37
+  },
+  {
+    "__docId__": 24,
+    "kind": "test",
+    "name": "it5",
+    "testId": 5,
+    "memberof": "src/components/Buttons/__test__/Button.test.jsx~describe0",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Buttons/__test__/Button.test.jsx~describe0.it5",
+    "access": null,
+    "description": "should not trigger function when clicking on disabled button",
+    "lineNumber": 45
+  },
+  {
+    "__docId__": 25,
+    "kind": "testFile",
+    "name": "src/components/Icons/__test__/Icon.test.jsx",
+    "content": "import React from 'react';\nimport { mountWithProvider } from '../../../../jest.utils';\nimport Icon from '../Icon';\n\ndescribe('Icon', () => {\n  it('should render', () => {\n    const wrapper = mountWithProvider(<Icon type=\"success\" />);\n    expect(wrapper.find('i.svg-icon')).toHaveLength(1);\n    expect(wrapper.find('i.svg-icon svg')).toHaveLength(1);\n  });\n\n  it('should display success icon', () => {\n    const wrapper = mountWithProvider(<Icon type=\"success\" />);\n    expect(wrapper.find('i.svg-icon')).toHaveLength(1);\n    expect(wrapper.find('i.svg-icon svg')).toHaveLength(1);\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should display warn icon', () => {\n    const wrapper = mountWithProvider(<Icon type=\"warn\" />);\n    expect(wrapper.find('i.svg-icon')).toHaveLength(1);\n    expect(wrapper.find('i.svg-icon svg')).toHaveLength(1);\n    expect(wrapper.render()).toMatchSnapshot();\n  });\n\n  it('should display info icon', () => {\n    const wrapper = mountWithProvider(<Icon type=\"info\" />);\n    expect(wrapper.find('i.svg-icon')).toHaveLength(1);\n    expect(wrapper.find('i.svg-icon svg')).toHaveLength(1);\n    expect(wrapper.render()).toMatchSnapshot();\n  });\n\n  it('should display error icon', () => {\n    const wrapper = mountWithProvider(<Icon type=\"error\" />);\n    expect(wrapper.find('i.svg-icon')).toHaveLength(1);\n    expect(wrapper.find('i.svg-icon svg')).toHaveLength(1);\n    expect(wrapper.render()).toMatchSnapshot();\n  });\n\n  it('should display loading icon', () => {\n    const wrapper = mountWithProvider(<Icon type=\"loading\" />);\n    expect(wrapper.find('i.svg-icon')).toHaveLength(1);\n    expect(wrapper.find('i.svg-icon svg')).toHaveLength(1);\n    expect(wrapper.find('i.svg-icon svg')).toHaveStyleRule('animation', expect.stringContaining('1s infinite linear'));\n    expect(wrapper.render()).toMatchSnapshot();\n  });\n\n  it('should not render on unknown icon', () => {\n    const wrapper = mountWithProvider(<Icon type=\"haha\" />);\n    expect(wrapper).toEqual({});\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/components/Icons/__test__/Icon.test.jsx",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 26,
+    "kind": "test",
+    "name": "describe6",
+    "testId": 6,
+    "memberof": "src/components/Icons/__test__/Icon.test.jsx",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/components/Icons/__test__/Icon.test.jsx~describe6",
+    "access": null,
+    "description": "Icon",
+    "lineNumber": 5
+  },
+  {
+    "__docId__": 27,
+    "kind": "test",
+    "name": "it7",
+    "testId": 7,
+    "memberof": "src/components/Icons/__test__/Icon.test.jsx~describe6",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Icons/__test__/Icon.test.jsx~describe6.it7",
+    "access": null,
+    "description": "should render",
+    "lineNumber": 6
+  },
+  {
+    "__docId__": 28,
+    "kind": "test",
+    "name": "it8",
+    "testId": 8,
+    "memberof": "src/components/Icons/__test__/Icon.test.jsx~describe6",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Icons/__test__/Icon.test.jsx~describe6.it8",
+    "access": null,
+    "description": "should display success icon",
+    "lineNumber": 12
+  },
+  {
+    "__docId__": 29,
+    "kind": "test",
+    "name": "it9",
+    "testId": 9,
+    "memberof": "src/components/Icons/__test__/Icon.test.jsx~describe6",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Icons/__test__/Icon.test.jsx~describe6.it9",
+    "access": null,
+    "description": "should display warn icon",
+    "lineNumber": 19
+  },
+  {
+    "__docId__": 30,
+    "kind": "test",
+    "name": "it10",
+    "testId": 10,
+    "memberof": "src/components/Icons/__test__/Icon.test.jsx~describe6",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Icons/__test__/Icon.test.jsx~describe6.it10",
+    "access": null,
+    "description": "should display info icon",
+    "lineNumber": 26
+  },
+  {
+    "__docId__": 31,
+    "kind": "test",
+    "name": "it11",
+    "testId": 11,
+    "memberof": "src/components/Icons/__test__/Icon.test.jsx~describe6",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Icons/__test__/Icon.test.jsx~describe6.it11",
+    "access": null,
+    "description": "should display error icon",
+    "lineNumber": 33
+  },
+  {
+    "__docId__": 32,
+    "kind": "test",
+    "name": "it12",
+    "testId": 12,
+    "memberof": "src/components/Icons/__test__/Icon.test.jsx~describe6",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Icons/__test__/Icon.test.jsx~describe6.it12",
+    "access": null,
+    "description": "should display loading icon",
+    "lineNumber": 40
+  },
+  {
+    "__docId__": 33,
+    "kind": "test",
+    "name": "it13",
+    "testId": 13,
+    "memberof": "src/components/Icons/__test__/Icon.test.jsx~describe6",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Icons/__test__/Icon.test.jsx~describe6.it13",
+    "access": null,
+    "description": "should not render on unknown icon",
+    "lineNumber": 48
+  },
+  {
+    "__docId__": 34,
+    "kind": "testFile",
+    "name": "src/components/Inputs/__test__/Input.test.jsx",
+    "content": "import React from 'react';\nimport { themes } from '@styles';\nimport { mountWithProvider } from '../../../../jest.utils';\nimport Input from '../Input';\n\ndescribe('Input', () => {\n  it('should render', () => {\n    const wrapper = mountWithProvider(<Input />);\n    expect(wrapper.find('input')).toHaveLength(1);\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should display turquoise border for valid input', () => {\n    const wrapper = mountWithProvider(<Input />);\n    expect(wrapper.find('input')).toHaveStyleRule(\n      'border', `0.0625rem solid ${themes.dark.color.inputBackgroundColor}`\n    );\n  });\n\n  it('should display red border on error', () => {\n    const wrapper = mountWithProvider(<Input error />);\n    expect(wrapper.find('input')).toHaveStyleRule(\n      'border', `0.0625rem solid ${themes.dark.color.errorColor}`\n    );\n    expect(wrapper).toMatchSnapshot();\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/components/Inputs/__test__/Input.test.jsx",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 35,
+    "kind": "test",
+    "name": "describe14",
+    "testId": 14,
+    "memberof": "src/components/Inputs/__test__/Input.test.jsx",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/components/Inputs/__test__/Input.test.jsx~describe14",
+    "access": null,
+    "description": "Input",
+    "lineNumber": 6
+  },
+  {
+    "__docId__": 36,
+    "kind": "test",
+    "name": "it15",
+    "testId": 15,
+    "memberof": "src/components/Inputs/__test__/Input.test.jsx~describe14",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Inputs/__test__/Input.test.jsx~describe14.it15",
+    "access": null,
+    "description": "should render",
+    "lineNumber": 7
+  },
+  {
+    "__docId__": 37,
+    "kind": "test",
+    "name": "it16",
+    "testId": 16,
+    "memberof": "src/components/Inputs/__test__/Input.test.jsx~describe14",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Inputs/__test__/Input.test.jsx~describe14.it16",
+    "access": null,
+    "description": "should display turquoise border for valid input",
+    "lineNumber": 13
+  },
+  {
+    "__docId__": 38,
+    "kind": "test",
+    "name": "it17",
+    "testId": 17,
+    "memberof": "src/components/Inputs/__test__/Input.test.jsx~describe14",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Inputs/__test__/Input.test.jsx~describe14.it17",
+    "access": null,
+    "description": "should display red border on error",
+    "lineNumber": 20
+  },
+  {
+    "__docId__": 39,
+    "kind": "testFile",
+    "name": "src/components/Inputs/__test__/InputGroup.test.jsx",
+    "content": "import React from 'react';\nimport { themes } from '@styles';\nimport { mountWithProvider } from '../../../../jest.utils';\nimport InputGroup from '../InputGroup';\n\nconst id = 'input-group-id';\nconst label = 'Input label';\nconst placeholder = 'Placeholder text';\nconst inputValue = 'Some value';\nconst onChange = jest.fn();\nconst autoComplete = 'off';\nconst maxLength = '15';\nconst error = 'Invalid input';\n\nafterEach(() => {\n  onChange.mockClear();\n});\n\ndescribe('Label', () => {\n  it('should render', () => {\n    const wrapper = mountWithProvider(\n      <InputGroup\n        id={id}\n        label={label}\n        placeholder={placeholder}\n        inputValue={inputValue}\n        onChange={onChange}\n      />\n    );\n    expect(wrapper.find('div')).toHaveLength(1);\n    expect(wrapper.find('div label')).toHaveLength(1);\n    expect(wrapper.find('div input')).toHaveLength(1);\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should display correct label text and have correct \"for\" attribute', () => {\n    const wrapper = mountWithProvider(\n      <InputGroup\n        id={id}\n        label={label}\n        placeholder={placeholder}\n        inputValue={inputValue}\n        onChange={onChange}\n      />\n    );\n    expect(wrapper.find('div.input-group label').text()).toEqual(label);\n    expect(wrapper.find('div.input-group label').props().htmlFor).toEqual(id);\n  });\n\n  it('should display input box with placeholder and value', () => {\n    const wrapper = mountWithProvider(\n      <InputGroup\n        id={id}\n        label={label}\n        placeholder={placeholder}\n        inputValue={inputValue}\n        onChange={onChange}\n      />\n    );\n    expect(wrapper.find('div.input-group input').props().value).toEqual(inputValue);\n    expect(wrapper.find('div.input-group input').props().placeholder).toEqual(placeholder);\n  });\n\n  it('should spread extra props to input', () => {\n    const wrapper = mountWithProvider(\n      <InputGroup\n        id={id}\n        label={label}\n        placeholder={placeholder}\n        inputValue={inputValue}\n        onChange={onChange}\n        autoComplete={autoComplete}\n        maxLength={maxLength}\n      />\n    );\n    expect(wrapper.find('div.input-group input').props().autoComplete).toEqual(autoComplete);\n    expect(wrapper.find('div.input-group input').props().maxLength).toEqual(maxLength);\n  });\n\n  it('should show error message and red border on input when field value is invalid', () => {\n    const wrapper = mountWithProvider(\n      <InputGroup\n        id={id}\n        label={label}\n        placeholder={placeholder}\n        inputValue={inputValue}\n        onChange={onChange}\n        error={error}\n      />\n    );\n    expect(wrapper.find('div.input-group div.error-message')).toHaveLength(1);\n    expect(wrapper.find('div.input-group div.error-message').text()).toEqual(error);\n    expect(wrapper.find('div.input-group input')).toHaveStyleRule(\n      'border', `0.0625rem solid ${themes.dark.color.errorColor}`\n    );\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should render with onChange listener', () => {\n    const wrapper = mountWithProvider(\n      <InputGroup\n        id={id}\n        label={label}\n        placeholder={placeholder}\n        inputValue={inputValue}\n        onChange={onChange}\n      />\n    );\n    wrapper.find('div.input-group input').simulate('change');\n    expect(onChange).toHaveBeenCalledTimes(1);\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/components/Inputs/__test__/InputGroup.test.jsx",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 40,
+    "kind": "test",
+    "name": "describe18",
+    "testId": 18,
+    "memberof": "src/components/Inputs/__test__/InputGroup.test.jsx",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/components/Inputs/__test__/InputGroup.test.jsx~describe18",
+    "access": null,
+    "description": "Label",
+    "lineNumber": 19
+  },
+  {
+    "__docId__": 41,
+    "kind": "test",
+    "name": "it19",
+    "testId": 19,
+    "memberof": "src/components/Inputs/__test__/InputGroup.test.jsx~describe18",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Inputs/__test__/InputGroup.test.jsx~describe18.it19",
+    "access": null,
+    "description": "should render",
+    "lineNumber": 20
+  },
+  {
+    "__docId__": 42,
+    "kind": "test",
+    "name": "it20",
+    "testId": 20,
+    "memberof": "src/components/Inputs/__test__/InputGroup.test.jsx~describe18",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Inputs/__test__/InputGroup.test.jsx~describe18.it20",
+    "access": null,
+    "description": "should display correct label text and have correct \"for\" attribute",
+    "lineNumber": 36
+  },
+  {
+    "__docId__": 43,
+    "kind": "test",
+    "name": "it21",
+    "testId": 21,
+    "memberof": "src/components/Inputs/__test__/InputGroup.test.jsx~describe18",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Inputs/__test__/InputGroup.test.jsx~describe18.it21",
+    "access": null,
+    "description": "should display input box with placeholder and value",
+    "lineNumber": 50
+  },
+  {
+    "__docId__": 44,
+    "kind": "test",
+    "name": "it22",
+    "testId": 22,
+    "memberof": "src/components/Inputs/__test__/InputGroup.test.jsx~describe18",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Inputs/__test__/InputGroup.test.jsx~describe18.it22",
+    "access": null,
+    "description": "should spread extra props to input",
+    "lineNumber": 64
+  },
+  {
+    "__docId__": 45,
+    "kind": "test",
+    "name": "it23",
+    "testId": 23,
+    "memberof": "src/components/Inputs/__test__/InputGroup.test.jsx~describe18",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Inputs/__test__/InputGroup.test.jsx~describe18.it23",
+    "access": null,
+    "description": "should show error message and red border on input when field value is invalid",
+    "lineNumber": 80
+  },
+  {
+    "__docId__": 46,
+    "kind": "test",
+    "name": "it24",
+    "testId": 24,
+    "memberof": "src/components/Inputs/__test__/InputGroup.test.jsx~describe18",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Inputs/__test__/InputGroup.test.jsx~describe18.it24",
+    "access": null,
+    "description": "should render with onChange listener",
+    "lineNumber": 99
+  },
+  {
+    "__docId__": 47,
+    "kind": "testFile",
+    "name": "src/components/Inputs/__test__/Label.test.jsx",
+    "content": "import React from 'react';\nimport { mountWithProvider } from '../../../../jest.utils';\nimport Label from '../Label';\n\nconst labelText = 'Input label';\n\ndescribe('Label', () => {\n  it('should render', () => {\n    const wrapper = mountWithProvider(<Label>{labelText}</Label>);\n    expect(wrapper.find('label')).toHaveLength(1);\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should display correct label text', () => {\n    const wrapper = mountWithProvider(<Label>{labelText}</Label>);\n    expect(wrapper.find('label').text()).toEqual(labelText);\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/components/Inputs/__test__/Label.test.jsx",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 48,
+    "kind": "test",
+    "name": "describe25",
+    "testId": 25,
+    "memberof": "src/components/Inputs/__test__/Label.test.jsx",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/components/Inputs/__test__/Label.test.jsx~describe25",
+    "access": null,
+    "description": "Label",
+    "lineNumber": 7
+  },
+  {
+    "__docId__": 49,
+    "kind": "test",
+    "name": "it26",
+    "testId": 26,
+    "memberof": "src/components/Inputs/__test__/Label.test.jsx~describe25",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Inputs/__test__/Label.test.jsx~describe25.it26",
+    "access": null,
+    "description": "should render",
+    "lineNumber": 8
+  },
+  {
+    "__docId__": 50,
+    "kind": "test",
+    "name": "it27",
+    "testId": 27,
+    "memberof": "src/components/Inputs/__test__/Label.test.jsx~describe25",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Inputs/__test__/Label.test.jsx~describe25.it27",
+    "access": null,
+    "description": "should display correct label text",
+    "lineNumber": 14
+  },
+  {
+    "__docId__": 51,
+    "kind": "testFile",
+    "name": "src/components/Loading/__test__/Loading.test.jsx",
+    "content": "import React from 'react';\nimport translations from '@locale';\nimport { mountWithProvider } from '../../../../jest.utils';\nimport Loading from '../Loading';\n\nconst loadingMessage = translations.en['app.loading'];\n\ndescribe('Loading', () => {\n  it('should render', () => {\n    const wrapper = mountWithProvider(<Loading />);\n    expect(wrapper.find('div.loading')).toHaveLength(1);\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should display correct loading message', () => {\n    const wrapper = mountWithProvider(<Loading />);\n    expect(wrapper.find('div.loading').text()).toEqual(loadingMessage);\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/components/Loading/__test__/Loading.test.jsx",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 52,
+    "kind": "test",
+    "name": "describe28",
+    "testId": 28,
+    "memberof": "src/components/Loading/__test__/Loading.test.jsx",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/components/Loading/__test__/Loading.test.jsx~describe28",
+    "access": null,
+    "description": "Loading",
+    "lineNumber": 8
+  },
+  {
+    "__docId__": 53,
+    "kind": "test",
+    "name": "it29",
+    "testId": 29,
+    "memberof": "src/components/Loading/__test__/Loading.test.jsx~describe28",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Loading/__test__/Loading.test.jsx~describe28.it29",
+    "access": null,
+    "description": "should render",
+    "lineNumber": 9
+  },
+  {
+    "__docId__": 54,
+    "kind": "test",
+    "name": "it30",
+    "testId": 30,
+    "memberof": "src/components/Loading/__test__/Loading.test.jsx~describe28",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Loading/__test__/Loading.test.jsx~describe28.it30",
+    "access": null,
+    "description": "should display correct loading message",
+    "lineNumber": 15
+  },
+  {
+    "__docId__": 55,
+    "kind": "testFile",
+    "name": "src/components/Messages/__test__/Message.test.jsx",
+    "content": "import React from 'react';\nimport { mountWithProvider } from '../../../../jest.utils';\nimport message, { Message } from '..';\n\nconst successMessage = 'Success Message!';\nconst warnMessage = 'Warning Message!';\nconst infoMessage = 'Info Message!';\nconst errorMessage = 'Error Message!';\nconst loadingMessage = 'Loading Message!';\n\ndescribe('Icon', () => {\n  it('should render', () => {\n    const wrapper = mountWithProvider(<Message type=\"success\" message={successMessage} />);\n    expect(wrapper.find('span.message')).toHaveLength(1);\n    expect(wrapper.find('span.message i svg')).toHaveLength(1);\n  });\n\n  it('should display success message', () => {\n    const wrapper = mountWithProvider(<Message type=\"success\" message={successMessage} />);\n    expect(wrapper.find('span.message')).toHaveLength(1);\n    expect(wrapper.find('span.message i svg')).toHaveLength(1);\n    expect(wrapper.find('span.message i svg').text()).toEqual('success.svg');\n    expect(wrapper.find('span.message span').text()).toEqual(successMessage);\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should display warning message', () => {\n    const wrapper = mountWithProvider(<Message type=\"warn\" message={warnMessage} />);\n    expect(wrapper.find('span.message')).toHaveLength(1);\n    expect(wrapper.find('span.message i svg')).toHaveLength(1);\n    expect(wrapper.find('span.message i svg').text()).toEqual('warn.svg');\n    expect(wrapper.find('span.message span').text()).toEqual(warnMessage);\n    expect(wrapper.render()).toMatchSnapshot();\n  });\n\n  it('should display info message', () => {\n    const wrapper = mountWithProvider(<Message type=\"info\" message={infoMessage} />);\n    expect(wrapper.find('span.message')).toHaveLength(1);\n    expect(wrapper.find('span.message i svg')).toHaveLength(1);\n    expect(wrapper.find('span.message i svg').text()).toEqual('info.svg');\n    expect(wrapper.find('span.message span').text()).toEqual(infoMessage);\n    expect(wrapper.render()).toMatchSnapshot();\n  });\n\n  it('should display error message', () => {\n    const wrapper = mountWithProvider(<Message type=\"error\" message={errorMessage} />);\n    expect(wrapper.find('span.message')).toHaveLength(1);\n    expect(wrapper.find('span.message i svg')).toHaveLength(1);\n    expect(wrapper.find('span.message i svg').text()).toEqual('error.svg');\n    expect(wrapper.find('span.message span').text()).toEqual(errorMessage);\n    expect(wrapper.render()).toMatchSnapshot();\n  });\n\n  it('should display loading message', () => {\n    const wrapper = mountWithProvider(<Message type=\"loading\" message={loadingMessage} />);\n    expect(wrapper.find('span.message')).toHaveLength(1);\n    expect(wrapper.find('span.message i svg')).toHaveLength(1);\n    expect(wrapper.find('span.message i svg').text()).toEqual('loading.svg');\n    expect(wrapper.find('span.message span').text()).toEqual(loadingMessage);\n    expect(wrapper.render()).toMatchSnapshot();\n  });\n});\n\ndescribe(('message'), () => {\n  it('should render', () => {\n    message.success(successMessage);\n    expect(document.querySelectorAll('.message-notification-notice')).toHaveLength(1);\n  });\n\n  it('should display 3 message at most', () => {\n    message.success(successMessage, 10);\n    message.success(successMessage, 10);\n    message.success(successMessage, 10);\n    message.success(successMessage, 10);\n    expect(document.querySelectorAll('.message-notification-notice')).toHaveLength(3);\n  });\n\n  it('should trigger success message when calling .success()', () => {\n    message.success(successMessage);\n    expect(document.querySelectorAll('.message-notification-notice')).toHaveLength(3);\n    expect(document.querySelector('.message-notification-notice:nth-child(3)').textContent).toContain(successMessage);\n  });\n\n  it('should trigger warning message when calling .warning()', () => {\n    message.warn(warnMessage);\n    expect(document.querySelectorAll('.message-notification-notice')).toHaveLength(3);\n    expect(document.querySelector('.message-notification-notice:nth-child(3)').textContent).toContain(warnMessage);\n  });\n\n  it('should trigger info message when calling .info()', () => {\n    message.info(infoMessage);\n    expect(document.querySelectorAll('.message-notification-notice')).toHaveLength(3);\n    expect(document.querySelector('.message-notification-notice:nth-child(3)').textContent).toContain(infoMessage);\n  });\n\n  it('should trigger error message when calling .error()', () => {\n    message.error(errorMessage);\n    expect(document.querySelectorAll('.message-notification-notice')).toHaveLength(3);\n    expect(document.querySelector('.message-notification-notice:nth-child(3)').textContent).toContain(errorMessage);\n  });\n\n  it('should trigger loading message when calling .loading()', () => {\n    message.loading(loadingMessage);\n    expect(document.querySelectorAll('.message-notification-notice')).toHaveLength(3);\n    expect(document.querySelector('.message-notification-notice:nth-child(3)').textContent).toContain(loadingMessage);\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/components/Messages/__test__/Message.test.jsx",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 56,
+    "kind": "test",
+    "name": "describe31",
+    "testId": 31,
+    "memberof": "src/components/Messages/__test__/Message.test.jsx",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/components/Messages/__test__/Message.test.jsx~describe31",
+    "access": null,
+    "description": "Icon",
+    "lineNumber": 11
+  },
+  {
+    "__docId__": 57,
+    "kind": "test",
+    "name": "it32",
+    "testId": 32,
+    "memberof": "src/components/Messages/__test__/Message.test.jsx~describe31",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Messages/__test__/Message.test.jsx~describe31.it32",
+    "access": null,
+    "description": "should render",
+    "lineNumber": 12
+  },
+  {
+    "__docId__": 58,
+    "kind": "test",
+    "name": "it33",
+    "testId": 33,
+    "memberof": "src/components/Messages/__test__/Message.test.jsx~describe31",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Messages/__test__/Message.test.jsx~describe31.it33",
+    "access": null,
+    "description": "should display success message",
+    "lineNumber": 18
+  },
+  {
+    "__docId__": 59,
+    "kind": "test",
+    "name": "it34",
+    "testId": 34,
+    "memberof": "src/components/Messages/__test__/Message.test.jsx~describe31",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Messages/__test__/Message.test.jsx~describe31.it34",
+    "access": null,
+    "description": "should display warning message",
+    "lineNumber": 27
+  },
+  {
+    "__docId__": 60,
+    "kind": "test",
+    "name": "it35",
+    "testId": 35,
+    "memberof": "src/components/Messages/__test__/Message.test.jsx~describe31",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Messages/__test__/Message.test.jsx~describe31.it35",
+    "access": null,
+    "description": "should display info message",
+    "lineNumber": 36
+  },
+  {
+    "__docId__": 61,
+    "kind": "test",
+    "name": "it36",
+    "testId": 36,
+    "memberof": "src/components/Messages/__test__/Message.test.jsx~describe31",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Messages/__test__/Message.test.jsx~describe31.it36",
+    "access": null,
+    "description": "should display error message",
+    "lineNumber": 45
+  },
+  {
+    "__docId__": 62,
+    "kind": "test",
+    "name": "it37",
+    "testId": 37,
+    "memberof": "src/components/Messages/__test__/Message.test.jsx~describe31",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Messages/__test__/Message.test.jsx~describe31.it37",
+    "access": null,
+    "description": "should display loading message",
+    "lineNumber": 54
+  },
+  {
+    "__docId__": 63,
+    "kind": "test",
+    "name": "describe38",
+    "testId": 38,
+    "memberof": "src/components/Messages/__test__/Message.test.jsx",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/components/Messages/__test__/Message.test.jsx~describe38",
+    "access": null,
+    "description": "message",
+    "lineNumber": 64
+  },
+  {
+    "__docId__": 64,
+    "kind": "test",
+    "name": "it39",
+    "testId": 39,
+    "memberof": "src/components/Messages/__test__/Message.test.jsx~describe38",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Messages/__test__/Message.test.jsx~describe38.it39",
+    "access": null,
+    "description": "should render",
+    "lineNumber": 65
+  },
+  {
+    "__docId__": 65,
+    "kind": "test",
+    "name": "it40",
+    "testId": 40,
+    "memberof": "src/components/Messages/__test__/Message.test.jsx~describe38",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Messages/__test__/Message.test.jsx~describe38.it40",
+    "access": null,
+    "description": "should display 3 message at most",
+    "lineNumber": 70
+  },
+  {
+    "__docId__": 66,
+    "kind": "test",
+    "name": "it41",
+    "testId": 41,
+    "memberof": "src/components/Messages/__test__/Message.test.jsx~describe38",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Messages/__test__/Message.test.jsx~describe38.it41",
+    "access": null,
+    "description": "should trigger success message when calling .success()",
+    "lineNumber": 78
+  },
+  {
+    "__docId__": 67,
+    "kind": "test",
+    "name": "it42",
+    "testId": 42,
+    "memberof": "src/components/Messages/__test__/Message.test.jsx~describe38",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Messages/__test__/Message.test.jsx~describe38.it42",
+    "access": null,
+    "description": "should trigger warning message when calling .warning()",
+    "lineNumber": 84
+  },
+  {
+    "__docId__": 68,
+    "kind": "test",
+    "name": "it43",
+    "testId": 43,
+    "memberof": "src/components/Messages/__test__/Message.test.jsx~describe38",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Messages/__test__/Message.test.jsx~describe38.it43",
+    "access": null,
+    "description": "should trigger info message when calling .info()",
+    "lineNumber": 90
+  },
+  {
+    "__docId__": 69,
+    "kind": "test",
+    "name": "it44",
+    "testId": 44,
+    "memberof": "src/components/Messages/__test__/Message.test.jsx~describe38",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Messages/__test__/Message.test.jsx~describe38.it44",
+    "access": null,
+    "description": "should trigger error message when calling .error()",
+    "lineNumber": 96
+  },
+  {
+    "__docId__": 70,
+    "kind": "test",
+    "name": "it45",
+    "testId": 45,
+    "memberof": "src/components/Messages/__test__/Message.test.jsx~describe38",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Messages/__test__/Message.test.jsx~describe38.it45",
+    "access": null,
+    "description": "should trigger loading message when calling .loading()",
+    "lineNumber": 102
+  },
+  {
+    "__docId__": 71,
+    "kind": "testFile",
+    "name": "src/components/Pages/__test__/Footer.test.jsx",
+    "content": "import React from 'react';\nimport translations from '@locale';\nimport { mountWithProvider } from '../../../../jest.utils';\nimport Footer from '../Footer';\n\nconst footerCopyrightText = translations.en['footer.copyright'].replace('{currentYear}', (new Date()).getFullYear());\nconst footerFullText = `${footerCopyrightText} ・ ${translations.en['footer.github']}`;\nconst footerHref = translations.en['footer.github.link'];\n\ndescribe('Footer', () => {\n  it('should render', () => {\n    const wrapper = mountWithProvider(<Footer />);\n    expect(wrapper.find('div.footer')).toHaveLength(1);\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should display correct copyright content', () => {\n    const wrapper = mountWithProvider(<Footer />);\n    expect(wrapper.find('div.footer').text()).toEqual(footerFullText);\n    expect(wrapper.find('div.footer a').props().href).toEqual(footerHref);\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/components/Pages/__test__/Footer.test.jsx",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 72,
+    "kind": "test",
+    "name": "describe46",
+    "testId": 46,
+    "memberof": "src/components/Pages/__test__/Footer.test.jsx",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/components/Pages/__test__/Footer.test.jsx~describe46",
+    "access": null,
+    "description": "Footer",
+    "lineNumber": 10
+  },
+  {
+    "__docId__": 73,
+    "kind": "test",
+    "name": "it47",
+    "testId": 47,
+    "memberof": "src/components/Pages/__test__/Footer.test.jsx~describe46",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Pages/__test__/Footer.test.jsx~describe46.it47",
+    "access": null,
+    "description": "should render",
+    "lineNumber": 11
+  },
+  {
+    "__docId__": 74,
+    "kind": "test",
+    "name": "it48",
+    "testId": 48,
+    "memberof": "src/components/Pages/__test__/Footer.test.jsx~describe46",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Pages/__test__/Footer.test.jsx~describe46.it48",
+    "access": null,
+    "description": "should display correct copyright content",
+    "lineNumber": 17
+  },
+  {
+    "__docId__": 75,
+    "kind": "testFile",
+    "name": "src/components/Pages/__test__/Page.test.jsx",
+    "content": "import React from 'react';\nimport { mountWithProvider } from '../../../../jest.utils';\nimport Page from '../Page';\n\nconst pageContent = 'Some content here';\n\ndescribe('Page', () => {\n  it('should render', () => {\n    const wrapper = mountWithProvider(<Page><p>Some content here</p></Page>);\n    expect(wrapper.find('div.content')).toHaveLength(1);\n    expect(wrapper.find('div.footer')).toHaveLength(1);\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should display correct content', () => {\n    const wrapper = mountWithProvider(<Page><p>{pageContent}</p></Page>);\n    expect(wrapper.find('div.content p')).toHaveLength(1);\n    expect(wrapper.find('div.content p').text()).toEqual(pageContent);\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/components/Pages/__test__/Page.test.jsx",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 76,
+    "kind": "test",
+    "name": "describe49",
+    "testId": 49,
+    "memberof": "src/components/Pages/__test__/Page.test.jsx",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/components/Pages/__test__/Page.test.jsx~describe49",
+    "access": null,
+    "description": "Page",
+    "lineNumber": 7
+  },
+  {
+    "__docId__": 77,
+    "kind": "test",
+    "name": "it50",
+    "testId": 50,
+    "memberof": "src/components/Pages/__test__/Page.test.jsx~describe49",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Pages/__test__/Page.test.jsx~describe49.it50",
+    "access": null,
+    "description": "should render",
+    "lineNumber": 8
+  },
+  {
+    "__docId__": 78,
+    "kind": "test",
+    "name": "it51",
+    "testId": 51,
+    "memberof": "src/components/Pages/__test__/Page.test.jsx~describe49",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Pages/__test__/Page.test.jsx~describe49.it51",
+    "access": null,
+    "description": "should display correct content",
+    "lineNumber": 15
+  },
+  {
+    "__docId__": 79,
+    "kind": "testFile",
+    "name": "src/components/Switches/__test__/Switch.test.jsx",
+    "content": "import React from 'react';\nimport { themes } from '@styles';\nimport { mountWithProvider } from '../../../../jest.utils';\nimport Switch from '../Switch';\n\nconst options1 = [\n  { label: 'em', value: 'em' },\n  { label: 'rem', value: 'rem' }\n];\n\nconst options2 = [\n  { label: '1', value: 1 },\n  { label: '2', value: 2 },\n  { label: '3', value: 3 },\n  { label: '4', value: 4 }\n];\n\nconst onChange = jest.fn();\n\nafterEach(() => {\n  onChange.mockClear();\n});\n\ndescribe('Switch', () => {\n  it('should render', () => {\n    const wrapper = mountWithProvider(<Switch onChange={onChange} value=\"em\" options={options1} label=\"Unit: \" />);\n    expect(wrapper.find('div.switch')).toHaveLength(1);\n    expect(wrapper.find('div.switch span.switch__label')).toHaveLength(1);\n    expect(wrapper.find('div.switch button.switch__button')).toHaveLength(2);\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should display switch with label and 2 options', () => {\n    const label = 'Unit: ';\n    const wrapper = mountWithProvider(\n      <Switch onChange={onChange} options={options1} label={label} />\n    );\n    expect(wrapper.find('div.switch span.switch__label')).toHaveLength(1);\n    expect(wrapper.find('div.switch span.switch__label').text()).toEqual(label.trim());\n    expect(wrapper.find('div.switch button.switch__button')).toHaveLength(2);\n    expect(wrapper.find('div.switch button.switch__button').at(0).text()).toEqual(options1[0].label);\n    expect(wrapper.find('div.switch button.switch__button').at(1).text()).toEqual(options1[1].label);\n  });\n\n  it('should display switch without label and 4 options', () => {\n    const wrapper = mountWithProvider(<Switch onChange={onChange} options={options2} />);\n    expect(wrapper.find('div.switch span.switch__label')).toHaveLength(0);\n    expect(wrapper.find('div.switch button.switch__button')).toHaveLength(4);\n    expect(wrapper.find('div.switch button.switch__button').at(0).text()).toEqual(options2[0].label);\n    expect(wrapper.find('div.switch button.switch__button').at(1).text()).toEqual(options2[1].label);\n    expect(wrapper.find('div.switch button.switch__button').at(2).text()).toEqual(options2[2].label);\n    expect(wrapper.find('div.switch button.switch__button').at(3).text()).toEqual(options2[3].label);\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should be able to highlight selected value', () => {\n    const wrapper = mountWithProvider(<Switch onChange={onChange} value=\"rem\" options={options1} />);\n    const {\n      dark: {\n        color: {\n          switchButtonBackgroundColor,\n          switchButtonTextColor,\n          switchButtonActiveBackgroundColor,\n          switchButtonActiveTextColor\n        }\n      }\n    } = themes;\n    expect(wrapper.find('div.switch button.switch__button').at(0))\n      .toHaveStyleRule('background-color', switchButtonBackgroundColor);\n    expect(wrapper.find('div.switch button.switch__button').at(0))\n      .toHaveStyleRule('color', switchButtonTextColor);\n    expect(wrapper.find('div.switch button.switch__button').at(1))\n      .toHaveStyleRule('background-color', switchButtonActiveBackgroundColor);\n    expect(wrapper.find('div.switch button.switch__button').at(1))\n      .toHaveStyleRule('color', switchButtonActiveTextColor);\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should be able to define minimum button width', () => {\n    const wrapper = mountWithProvider(<Switch onChange={onChange} options={options1} buttonWidth=\"2.5rem\" />);\n    expect(wrapper.find('div.switch button.switch__button').at(0)).toHaveStyleRule('min-width', '2.5rem');\n    expect(wrapper.find('div.switch button.switch__button').at(1)).toHaveStyleRule('min-width', '2.5rem');\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should trigger onChange when clicking on switch buttons', () => {\n    const wrapper = mountWithProvider(<Switch onChange={onChange} value=\"rem\" options={options1} />);\n    wrapper.find('div.switch button.switch__button').at(0).simulate('click');\n    expect(onChange).toHaveBeenCalledTimes(1);\n    wrapper.find('div.switch button.switch__button').at(1).simulate('click');\n    expect(onChange).toHaveBeenCalledTimes(2);\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/components/Switches/__test__/Switch.test.jsx",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 80,
+    "kind": "test",
+    "name": "describe52",
+    "testId": 52,
+    "memberof": "src/components/Switches/__test__/Switch.test.jsx",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/components/Switches/__test__/Switch.test.jsx~describe52",
+    "access": null,
+    "description": "Switch",
+    "lineNumber": 24
+  },
+  {
+    "__docId__": 81,
+    "kind": "test",
+    "name": "it53",
+    "testId": 53,
+    "memberof": "src/components/Switches/__test__/Switch.test.jsx~describe52",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Switches/__test__/Switch.test.jsx~describe52.it53",
+    "access": null,
+    "description": "should render",
+    "lineNumber": 25
+  },
+  {
+    "__docId__": 82,
+    "kind": "test",
+    "name": "it54",
+    "testId": 54,
+    "memberof": "src/components/Switches/__test__/Switch.test.jsx~describe52",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Switches/__test__/Switch.test.jsx~describe52.it54",
+    "access": null,
+    "description": "should display switch with label and 2 options",
+    "lineNumber": 33
+  },
+  {
+    "__docId__": 83,
+    "kind": "test",
+    "name": "it55",
+    "testId": 55,
+    "memberof": "src/components/Switches/__test__/Switch.test.jsx~describe52",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Switches/__test__/Switch.test.jsx~describe52.it55",
+    "access": null,
+    "description": "should display switch without label and 4 options",
+    "lineNumber": 45
+  },
+  {
+    "__docId__": 84,
+    "kind": "test",
+    "name": "it56",
+    "testId": 56,
+    "memberof": "src/components/Switches/__test__/Switch.test.jsx~describe52",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Switches/__test__/Switch.test.jsx~describe52.it56",
+    "access": null,
+    "description": "should be able to highlight selected value",
+    "lineNumber": 56
+  },
+  {
+    "__docId__": 85,
+    "kind": "test",
+    "name": "it57",
+    "testId": 57,
+    "memberof": "src/components/Switches/__test__/Switch.test.jsx~describe52",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Switches/__test__/Switch.test.jsx~describe52.it57",
+    "access": null,
+    "description": "should be able to define minimum button width",
+    "lineNumber": 79
+  },
+  {
+    "__docId__": 86,
+    "kind": "test",
+    "name": "it58",
+    "testId": 58,
+    "memberof": "src/components/Switches/__test__/Switch.test.jsx~describe52",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Switches/__test__/Switch.test.jsx~describe52.it58",
+    "access": null,
+    "description": "should trigger onChange when clicking on switch buttons",
+    "lineNumber": 86
+  },
+  {
+    "__docId__": 87,
+    "kind": "testFile",
+    "name": "src/components/Tables/__test__/FlexTable.test.jsx",
+    "content": "import React from 'react';\nimport { mediaQueries } from '@styles';\nimport { mountWithProvider } from '../../../../jest.utils';\nimport FlexTable from '../FlexTable';\n\nconst data = [\n  {\n    key: '1',\n    content: <span>1</span>\n  },\n  {\n    key: '2',\n    content: <span>2</span>\n  },\n  {\n    key: '3',\n    content: <span>3</span>\n  }\n];\n\ndescribe('FlexTable', () => {\n  it('should render', () => {\n    const wrapper = mountWithProvider(<FlexTable data={data} />);\n    expect(wrapper.find('ul.flex-table')).toHaveLength(1);\n    expect(wrapper.find('ul.flex-table li.flex-table__cell')).toHaveLength(3);\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should display correct cell content', () => {\n    const wrapper = mountWithProvider(<FlexTable data={data} />);\n    expect(wrapper.find('ul.flex-table li.flex-table__cell').at(0).find('span')).toHaveLength(1);\n    expect(wrapper.find('ul.flex-table li.flex-table__cell').at(0).text()).toEqual('1');\n    expect(wrapper.find('ul.flex-table li.flex-table__cell').at(1).find('span')).toHaveLength(1);\n    expect(wrapper.find('ul.flex-table li.flex-table__cell').at(1).text()).toEqual('2');\n    expect(wrapper.find('ul.flex-table li.flex-table__cell').at(2).find('span')).toHaveLength(1);\n    expect(wrapper.find('ul.flex-table li.flex-table__cell').at(2).text()).toEqual('3');\n  });\n\n  it('should adjust column width according to props', () => {\n    const column = {\n      sm: 1,\n      md: 2,\n      lg: 3,\n      xl: 4\n    };\n\n    const wrapper = mountWithProvider(\n      <FlexTable data={data} sm={column.sm} md={column.md} lg={column.lg} xl={column.xl} />\n    );\n    expect(wrapper.find('ul.flex-table').at(0)).toHaveStyleRule(\n      'flex', `0 1 ${100 / column.sm}%`, { modifier: ' > li' }\n    );\n    expect(wrapper.find('ul.flex-table').at(0)).toHaveStyleRule(\n      'max-width', `${100 / column.sm}%`, { modifier: ' > li' }\n    );\n    expect(wrapper.find('ul.flex-table').at(0)).toHaveStyleRule(\n      'flex', `0 1 ${100 / column.md}%`, { modifier: ' > li', media: mediaQueries.tabletDesktop }\n    );\n    expect(wrapper.find('ul.flex-table').at(0)).toHaveStyleRule(\n      'max-width', `${100 / column.md}%`, { modifier: ' > li', media: mediaQueries.tabletDesktop }\n    );\n    expect(wrapper.find('ul.flex-table').at(0)).toHaveStyleRule(\n      'flex', `0 1 ${100 / column.lg}%`, { modifier: ' > li', media: mediaQueries.desktop }\n    );\n    expect(wrapper.find('ul.flex-table').at(0)).toHaveStyleRule(\n      'max-width', `${100 / column.lg}%`, { modifier: ' > li', media: mediaQueries.desktop }\n    );\n    expect(wrapper.find('ul.flex-table').at(0)).toHaveStyleRule(\n      'flex', `0 1 ${100 / column.xl}%`, { modifier: ' > li', media: mediaQueries.largerScreen }\n    );\n    expect(wrapper.find('ul.flex-table').at(0)).toHaveStyleRule(\n      'max-width', `${100 / column.xl}%`, { modifier: ' > li', media: mediaQueries.largerScreen }\n    );\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/components/Tables/__test__/FlexTable.test.jsx",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 88,
+    "kind": "test",
+    "name": "describe59",
+    "testId": 59,
+    "memberof": "src/components/Tables/__test__/FlexTable.test.jsx",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/components/Tables/__test__/FlexTable.test.jsx~describe59",
+    "access": null,
+    "description": "FlexTable",
+    "lineNumber": 21
+  },
+  {
+    "__docId__": 89,
+    "kind": "test",
+    "name": "it60",
+    "testId": 60,
+    "memberof": "src/components/Tables/__test__/FlexTable.test.jsx~describe59",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Tables/__test__/FlexTable.test.jsx~describe59.it60",
+    "access": null,
+    "description": "should render",
+    "lineNumber": 22
+  },
+  {
+    "__docId__": 90,
+    "kind": "test",
+    "name": "it61",
+    "testId": 61,
+    "memberof": "src/components/Tables/__test__/FlexTable.test.jsx~describe59",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Tables/__test__/FlexTable.test.jsx~describe59.it61",
+    "access": null,
+    "description": "should display correct cell content",
+    "lineNumber": 29
+  },
+  {
+    "__docId__": 91,
+    "kind": "test",
+    "name": "it62",
+    "testId": 62,
+    "memberof": "src/components/Tables/__test__/FlexTable.test.jsx~describe59",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Tables/__test__/FlexTable.test.jsx~describe59.it62",
+    "access": null,
+    "description": "should adjust column width according to props",
+    "lineNumber": 39
+  },
+  {
+    "__docId__": 92,
+    "kind": "testFile",
+    "name": "src/components/Texts/__test__/AppTitle.test.jsx",
+    "content": "import React from 'react';\nimport { mountWithProvider } from '../../../../jest.utils';\nimport AppTitle from '../AppTitle';\n\nconst appName = 'PX2EM Converter';\n\ndescribe('AppTitle', () => {\n  it('should render', () => {\n    const wrapper = mountWithProvider(<AppTitle>{appName}</AppTitle>);\n    expect(wrapper.find('h1')).toHaveLength(1);\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should display correct title', () => {\n    const wrapper = mountWithProvider(<AppTitle>{appName}</AppTitle>);\n    expect(wrapper.find('h1').text()).toEqual(appName);\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/components/Texts/__test__/AppTitle.test.jsx",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 93,
+    "kind": "test",
+    "name": "describe63",
+    "testId": 63,
+    "memberof": "src/components/Texts/__test__/AppTitle.test.jsx",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/components/Texts/__test__/AppTitle.test.jsx~describe63",
+    "access": null,
+    "description": "AppTitle",
+    "lineNumber": 7
+  },
+  {
+    "__docId__": 94,
+    "kind": "test",
+    "name": "it64",
+    "testId": 64,
+    "memberof": "src/components/Texts/__test__/AppTitle.test.jsx~describe63",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Texts/__test__/AppTitle.test.jsx~describe63.it64",
+    "access": null,
+    "description": "should render",
+    "lineNumber": 8
+  },
+  {
+    "__docId__": 95,
+    "kind": "test",
+    "name": "it65",
+    "testId": 65,
+    "memberof": "src/components/Texts/__test__/AppTitle.test.jsx~describe63",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Texts/__test__/AppTitle.test.jsx~describe63.it65",
+    "access": null,
+    "description": "should display correct title",
+    "lineNumber": 14
+  },
+  {
+    "__docId__": 96,
+    "kind": "testFile",
+    "name": "src/components/Texts/__test__/ErrorMessage.test.jsx",
+    "content": "import React from 'react';\nimport { themes } from '@styles';\nimport { mountWithProvider } from '../../../../jest.utils';\nimport ErrorMessage from '../ErrorMessage';\n\nconst message = 'Invalid format';\n\ndescribe('ErrorMessage', () => {\n  it('should render', () => {\n    const wrapper = mountWithProvider(<ErrorMessage>{message}</ErrorMessage>);\n    expect(wrapper.find('div')).toHaveLength(1);\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should display correct error message', () => {\n    const wrapper = mountWithProvider(<ErrorMessage>{message}</ErrorMessage>);\n    expect(wrapper.find('div').text()).toEqual(message);\n  });\n\n  it('should display in smaller size and have a red color', () => {\n    const wrapper = mountWithProvider(<ErrorMessage>{message}</ErrorMessage>);\n    expect(wrapper.find('div')).toHaveLength(1);\n    expect(wrapper.find('div')).toHaveStyleRule('font-size', '0.75rem');\n    expect(wrapper.find('div')).toHaveStyleRule('line-height', '1.5rem');\n    expect(wrapper.find('div')).toHaveStyleRule('color', themes.dark.color.errorColor);\n    expect(wrapper.find('div')).toHaveStyleRule('margin-top', '0.5rem');\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/components/Texts/__test__/ErrorMessage.test.jsx",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 97,
+    "kind": "test",
+    "name": "describe66",
+    "testId": 66,
+    "memberof": "src/components/Texts/__test__/ErrorMessage.test.jsx",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/components/Texts/__test__/ErrorMessage.test.jsx~describe66",
+    "access": null,
+    "description": "ErrorMessage",
+    "lineNumber": 8
+  },
+  {
+    "__docId__": 98,
+    "kind": "test",
+    "name": "it67",
+    "testId": 67,
+    "memberof": "src/components/Texts/__test__/ErrorMessage.test.jsx~describe66",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Texts/__test__/ErrorMessage.test.jsx~describe66.it67",
+    "access": null,
+    "description": "should render",
+    "lineNumber": 9
+  },
+  {
+    "__docId__": 99,
+    "kind": "test",
+    "name": "it68",
+    "testId": 68,
+    "memberof": "src/components/Texts/__test__/ErrorMessage.test.jsx~describe66",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Texts/__test__/ErrorMessage.test.jsx~describe66.it68",
+    "access": null,
+    "description": "should display correct error message",
+    "lineNumber": 15
+  },
+  {
+    "__docId__": 100,
+    "kind": "test",
+    "name": "it69",
+    "testId": 69,
+    "memberof": "src/components/Texts/__test__/ErrorMessage.test.jsx~describe66",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Texts/__test__/ErrorMessage.test.jsx~describe66.it69",
+    "access": null,
+    "description": "should display in smaller size and have a red color",
+    "lineNumber": 20
+  },
+  {
+    "__docId__": 101,
+    "kind": "testFile",
+    "name": "src/components/Texts/__test__/PixelRemPair.test.jsx",
+    "content": "import React from 'react';\nimport { themes } from '@styles';\nimport { mountWithProvider } from '../../../../jest.utils';\nimport PixelRemPair from '../PixelRemPair';\n\nconst pixel = '16px';\nconst rem = '1rem';\nconst copyToClipboard = jest.fn();\n\nafterEach(() => {\n  copyToClipboard.mockClear();\n});\n\ndescribe('Remarks', () => {\n  it('should render', () => {\n    const wrapper = mountWithProvider(<PixelRemPair pixel={pixel} rem={rem} />);\n    expect(wrapper.find('div.pixel-rem-pair')).toHaveLength(1);\n    expect(wrapper.find('div span.pixel-rem-pair__pixel')).toHaveLength(1);\n    expect(wrapper.find('div span.pixel-rem-pair__rem')).toHaveLength(1);\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should display correct content', () => {\n    const wrapper = mountWithProvider(<PixelRemPair pixel={pixel} rem={rem} />);\n    expect(wrapper.find('div.pixel-rem-pair').text()).toEqual(`${pixel} = ${rem}`);\n  });\n\n  it('should display pixel text in a lighter color, and rem text in semi-bold', () => {\n    const wrapper = mountWithProvider(<PixelRemPair pixel={pixel} rem={rem} />);\n    expect(wrapper.find('div.pixel-rem-pair')).toHaveStyleRule('cursor', 'default');\n    expect(wrapper.find('div.pixel-rem-pair span.pixel-rem-pair__pixel')).toHaveStyleRule('color', themes.dark.color.secondaryTextColor);\n    expect(wrapper.find('div.pixel-rem-pair span.pixel-rem-pair__rem')).toHaveStyleRule('color', themes.dark.color.textColor);\n    expect(wrapper.find('div.pixel-rem-pair span.pixel-rem-pair__rem')).toHaveStyleRule('font-weight', '600');\n  });\n\n  it('should render with onClick and onKeyPress listener', () => {\n    const wrapper = mountWithProvider(\n      <PixelRemPair pixel={pixel} rem={rem} copyToClipboard={copyToClipboard} />\n    );\n    expect(wrapper.find('div.pixel-rem-pair')).toHaveStyleRule('cursor', 'pointer');\n    wrapper.find('div.pixel-rem-pair').simulate('click');\n    expect(copyToClipboard).toHaveBeenCalledTimes(1);\n    wrapper.find('div.pixel-rem-pair').simulate('keypress');\n    expect(copyToClipboard).toHaveBeenCalledTimes(2);\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/components/Texts/__test__/PixelRemPair.test.jsx",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 102,
+    "kind": "test",
+    "name": "describe70",
+    "testId": 70,
+    "memberof": "src/components/Texts/__test__/PixelRemPair.test.jsx",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/components/Texts/__test__/PixelRemPair.test.jsx~describe70",
+    "access": null,
+    "description": "Remarks",
+    "lineNumber": 14
+  },
+  {
+    "__docId__": 103,
+    "kind": "test",
+    "name": "it71",
+    "testId": 71,
+    "memberof": "src/components/Texts/__test__/PixelRemPair.test.jsx~describe70",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Texts/__test__/PixelRemPair.test.jsx~describe70.it71",
+    "access": null,
+    "description": "should render",
+    "lineNumber": 15
+  },
+  {
+    "__docId__": 104,
+    "kind": "test",
+    "name": "it72",
+    "testId": 72,
+    "memberof": "src/components/Texts/__test__/PixelRemPair.test.jsx~describe70",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Texts/__test__/PixelRemPair.test.jsx~describe70.it72",
+    "access": null,
+    "description": "should display correct content",
+    "lineNumber": 23
+  },
+  {
+    "__docId__": 105,
+    "kind": "test",
+    "name": "it73",
+    "testId": 73,
+    "memberof": "src/components/Texts/__test__/PixelRemPair.test.jsx~describe70",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Texts/__test__/PixelRemPair.test.jsx~describe70.it73",
+    "access": null,
+    "description": "should display pixel text in a lighter color, and rem text in semi-bold",
+    "lineNumber": 28
+  },
+  {
+    "__docId__": 106,
+    "kind": "test",
+    "name": "it74",
+    "testId": 74,
+    "memberof": "src/components/Texts/__test__/PixelRemPair.test.jsx~describe70",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Texts/__test__/PixelRemPair.test.jsx~describe70.it74",
+    "access": null,
+    "description": "should render with onClick and onKeyPress listener",
+    "lineNumber": 36
+  },
+  {
+    "__docId__": 107,
+    "kind": "testFile",
+    "name": "src/components/Texts/__test__/Remarks.test.jsx",
+    "content": "import React from 'react';\nimport { themes } from '@styles';\nimport { mountWithProvider } from '../../../../jest.utils';\nimport Remarks from '../Remarks';\n\nconst remarks = 'Some remarks here';\n\ndescribe('Remarks', () => {\n  it('should render', () => {\n    const wrapper = mountWithProvider(<Remarks>{remarks}</Remarks>);\n    expect(wrapper.find('span')).toHaveLength(1);\n    expect(wrapper).toMatchSnapshot();\n  });\n\n  it('should display correct remarks', () => {\n    const wrapper = mountWithProvider(<Remarks>{remarks}</Remarks>);\n    expect(wrapper.find('span').text()).toEqual(remarks);\n  });\n\n  it('should display in smaller size and have a lighter color', () => {\n    const wrapper = mountWithProvider(<Remarks>{remarks}</Remarks>);\n    expect(wrapper.find('span')).toHaveStyleRule('font-size', '0.875rem');\n    expect(wrapper.find('span')).toHaveStyleRule('color', themes.dark.color.secondaryTextColor);\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/components/Texts/__test__/Remarks.test.jsx",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 108,
+    "kind": "test",
+    "name": "describe75",
+    "testId": 75,
+    "memberof": "src/components/Texts/__test__/Remarks.test.jsx",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/components/Texts/__test__/Remarks.test.jsx~describe75",
+    "access": null,
+    "description": "Remarks",
+    "lineNumber": 8
+  },
+  {
+    "__docId__": 109,
+    "kind": "test",
+    "name": "it76",
+    "testId": 76,
+    "memberof": "src/components/Texts/__test__/Remarks.test.jsx~describe75",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Texts/__test__/Remarks.test.jsx~describe75.it76",
+    "access": null,
+    "description": "should render",
+    "lineNumber": 9
+  },
+  {
+    "__docId__": 110,
+    "kind": "test",
+    "name": "it77",
+    "testId": 77,
+    "memberof": "src/components/Texts/__test__/Remarks.test.jsx~describe75",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Texts/__test__/Remarks.test.jsx~describe75.it77",
+    "access": null,
+    "description": "should display correct remarks",
+    "lineNumber": 15
+  },
+  {
+    "__docId__": 111,
+    "kind": "test",
+    "name": "it78",
+    "testId": 78,
+    "memberof": "src/components/Texts/__test__/Remarks.test.jsx~describe75",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/components/Texts/__test__/Remarks.test.jsx~describe75.it78",
+    "access": null,
+    "description": "should display in smaller size and have a lighter color",
+    "lineNumber": 20
+  },
+  {
+    "__docId__": 112,
+    "kind": "testFile",
+    "name": "src/hooks/__test__/useDebounce.test.jsx",
+    "content": "import { renderHook, act } from '@testing-library/react-hooks';\nimport useDebounce from '../useDebounce';\n\njest.useFakeTimers();\n\ndescribe('useDebounce()', () => {\n  it('shoud debounce state', () => {\n    const { result, rerender } = renderHook(({ value, delay }) => useDebounce(value, delay), {\n      initialProps: { value: 0, delay: 500 }\n    });\n\n    act(() => {\n      rerender({ value: 10 });\n    });\n    expect(result.current).toEqual(0);\n\n    act(() => {\n      jest.runOnlyPendingTimers();\n    });\n    expect(result.current).toEqual(10);\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/hooks/__test__/useDebounce.test.jsx",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 113,
+    "kind": "test",
+    "name": "describe79",
+    "testId": 79,
+    "memberof": "src/hooks/__test__/useDebounce.test.jsx",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/hooks/__test__/useDebounce.test.jsx~describe79",
+    "access": null,
+    "description": "useDebounce()",
+    "lineNumber": 6
+  },
+  {
+    "__docId__": 114,
+    "kind": "test",
+    "name": "it80",
+    "testId": 80,
+    "memberof": "src/hooks/__test__/useDebounce.test.jsx~describe79",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/hooks/__test__/useDebounce.test.jsx~describe79.it80",
+    "access": null,
+    "description": "shoud debounce state",
+    "lineNumber": 7
+  },
+  {
+    "__docId__": 115,
+    "kind": "testFile",
+    "name": "src/utils/__test__/color.utils.test.js",
+    "content": "import convertHexToRgb from '../color.utils';\n\nconst hexString = '#e87722';\nconst hexNumber = '654321';\nconst invalidInput = 'hahaha';\n\ndescribe('convertHexToRgb()', () => {\n  it(`should convert Hex \"${hexString}\" to rgb`, () => {\n    expect(convertHexToRgb(hexString)).toEqual('232, 119, 34');\n  });\n\n  it(`should convert Hex number \"${hexNumber}\" to rgb`, () => {\n    expect(convertHexToRgb(hexNumber)).toEqual('101, 67, 33');\n  });\n\n  it(`should convert random string \"${invalidInput}\" to rgb`, () => {\n    expect(convertHexToRgb(invalidInput)).toEqual('');\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/utils/__test__/color.utils.test.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 116,
+    "kind": "test",
+    "name": "describe81",
+    "testId": 81,
+    "memberof": "src/utils/__test__/color.utils.test.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/utils/__test__/color.utils.test.js~describe81",
+    "access": null,
+    "description": "convertHexToRgb()",
+    "lineNumber": 7
+  },
+  {
+    "__docId__": 117,
+    "kind": "test",
+    "name": "it82",
+    "testId": 82,
+    "memberof": "src/utils/__test__/color.utils.test.js~describe81",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/color.utils.test.js~describe81.it82",
+    "access": null,
+    "lineNumber": 8
+  },
+  {
+    "__docId__": 118,
+    "kind": "test",
+    "name": "it83",
+    "testId": 83,
+    "memberof": "src/utils/__test__/color.utils.test.js~describe81",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/color.utils.test.js~describe81.it83",
+    "access": null,
+    "lineNumber": 12
+  },
+  {
+    "__docId__": 119,
+    "kind": "test",
+    "name": "it84",
+    "testId": 84,
+    "memberof": "src/utils/__test__/color.utils.test.js~describe81",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/color.utils.test.js~describe81.it84",
+    "access": null,
+    "lineNumber": 16
+  },
+  {
+    "__docId__": 120,
+    "kind": "testFile",
+    "name": "src/utils/__test__/format.utils.test.js",
+    "content": "import {\n  roundToNearest,\n  deduplicateArray,\n  removeExtraSpacesAndCommas,\n  convertPixelRangeToArray\n} from '../format.utils';\n\ndescribe('roundToNearest()', () => {\n  [\n    {\n      value: 1,\n      precision: 4,\n      expected: 1\n    },\n    {\n      value: 2.01,\n      precision: 4,\n      expected: 2.01\n    },\n    {\n      value: 33.23,\n      precision: 4,\n      expected: 33.23\n    },\n    {\n      value: 47.236,\n      precision: 4,\n      expected: 47.236\n    },\n    {\n      value: 57.3842,\n      precision: 4,\n      expected: 57.3842\n    },\n    {\n      value: 67.39999,\n      precision: 4,\n      expected: 67.4\n    },\n    {\n      value: 70.12345,\n      precision: 4,\n      expected: 70.1235\n    },\n    {\n      value: 84.12345,\n      precision: 4,\n      expected: 84.1235\n    },\n    {\n      value: 99.12341,\n      precision: 4,\n      expected: 99.1234\n    },\n    {\n      value: 1.0001,\n      precision: 0,\n      expected: 1\n    },\n    {\n      value: 1.00000000001,\n      precision: 2,\n      expected: 1\n    },\n    {\n      value: 1.99300001,\n      precision: 2,\n      expected: 1.99\n    }\n  ].forEach(({ value, precision, expected }) => {\n    it(`should round ${value} to nearest ${precision} decimal places`, () => {\n      expect(roundToNearest(value, precision)).toEqual(expected);\n    });\n  });\n\n  it('should return original value when precision specified is a string', () => {\n    const value = 1.0000003;\n    expect(roundToNearest(value, 'string')).toEqual(value);\n  });\n\n  it('should return original value when precision specified is not integer', () => {\n    const value = 1.0000003;\n    expect(roundToNearest(value, 1.3)).toEqual(value);\n  });\n});\n\ndescribe('deduplicateArray()', () => {\n  it('should return an deduplicated array', () => {\n    expect(deduplicateArray([5, 1, 2, 3, 4, 4, 5])).toEqual([5, 1, 2, 3, 4]);\n  });\n\n  it('should return the original array when no deduplicated value is found', () => {\n    expect(deduplicateArray([10, 11, 12])).toEqual([10, 11, 12]);\n  });\n\n  it('should return an empty array when input is not an array', () => {\n    expect(deduplicateArray('LGTM')).toEqual([]);\n  });\n});\n\ndescribe('removeExtraSpacesAndCommas()', () => {\n  it('should remove multiple consecutive spaces', () => {\n    expect(removeExtraSpacesAndCommas('The quick   brown fox     jumped over the lazy dog')).toEqual(\n      'The quick brown fox jumped over the lazy dog'\n    );\n  });\n\n  it('should remove trialing comma', () => {\n    expect(removeExtraSpacesAndCommas('Hello,')).toEqual(\n      'Hello'\n    );\n  });\n\n  it('should remove trialing space and comma', () => {\n    expect(removeExtraSpacesAndCommas('1, 2, 3, ')).toEqual(\n      '1, 2, 3'\n    );\n  });\n\n  it('should remove multiple consecutive spaces and trialing comma', () => {\n    expect(removeExtraSpacesAndCommas('Hello,   World,')).toEqual(\n      'Hello, World'\n    );\n  });\n\n  it('should return the original string when there is no multiple consecutive spaces, trialing space and comma', () => {\n    expect(removeExtraSpacesAndCommas('My pen is blue.')).toEqual(\n      'My pen is blue.'\n    );\n  });\n});\n\ndescribe('convertPixelRangeToArray()', () => {\n  [\n    ['1', [1]],\n    ['1-2', [1, 2]],\n    ['1 - 2', [1, 2]],\n    ['1 -2', [1, 2]],\n    ['1- 2', [1, 2]],\n    ['1-     2', [1, 2]],\n    ['11,15,90', [11, 15, 90]],\n    ['12, 50, 70', [12, 50, 70]],\n    ['1,2-10,12-15,18', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 18]],\n    ['1, 2 - 10, 100', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100]],\n    ['11, 23 - 26, 12 - 15, 18,', [11, 12, 13, 14, 15, 18, 23, 24, 25, 26]]\n  ].forEach(([input, output]) => {\n    it(`should convert valid input \"${input}\" to [${output.toString()}]`, () => {\n      expect(convertPixelRangeToArray(input)).toEqual(output);\n    });\n  });\n\n  [\n    '',\n    'a',\n    '-, a',\n    ' ',\n    '-',\n    '1,,2',\n    '11, 23 -- 26, b - 15, 18-,',\n    '11-, 23 - 26, 12 - 15, 18-,',\n    '11, 23 - 26, b - 15, 18-,',\n    '11, 23 - 26, b - 15, 18-, ',\n    '-1',\n    '1 2, 3',\n    '-1 2, 3',\n    '1, -2 - 10, 30 - 50, 100',\n    '1 2-10',\n    '1-2-3',\n    ',5',\n    '5-,9',\n    '9-5,',\n    '2,6-',\n    '10-1',\n    ', 5',\n    '5 - , 9',\n    '9 - 5, ',\n    '2, 6 -',\n    '10 - 1'\n  ].forEach((invalidPixelRange) => {\n    it(`should convert invalid input \"${invalidPixelRange}\" to empty array`, () => {\n      expect(convertPixelRangeToArray(invalidPixelRange)).toEqual([]);\n    });\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/utils/__test__/format.utils.test.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 121,
+    "kind": "test",
+    "name": "describe85",
+    "testId": 85,
+    "memberof": "src/utils/__test__/format.utils.test.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/utils/__test__/format.utils.test.js~describe85",
+    "access": null,
+    "description": "roundToNearest()",
+    "lineNumber": 8
+  },
+  {
+    "__docId__": 122,
+    "kind": "test",
+    "name": "it86",
+    "testId": 86,
+    "memberof": "src/utils/__test__/format.utils.test.js~describe85",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/format.utils.test.js~describe85.it86",
+    "access": null,
+    "lineNumber": 71
+  },
+  {
+    "__docId__": 123,
+    "kind": "test",
+    "name": "it87",
+    "testId": 87,
+    "memberof": "src/utils/__test__/format.utils.test.js~describe85",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/format.utils.test.js~describe85.it87",
+    "access": null,
+    "description": "should return original value when precision specified is a string",
+    "lineNumber": 76
+  },
+  {
+    "__docId__": 124,
+    "kind": "test",
+    "name": "it88",
+    "testId": 88,
+    "memberof": "src/utils/__test__/format.utils.test.js~describe85",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/format.utils.test.js~describe85.it88",
+    "access": null,
+    "description": "should return original value when precision specified is not integer",
+    "lineNumber": 81
+  },
+  {
+    "__docId__": 125,
+    "kind": "test",
+    "name": "describe89",
+    "testId": 89,
+    "memberof": "src/utils/__test__/format.utils.test.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/utils/__test__/format.utils.test.js~describe89",
+    "access": null,
+    "description": "deduplicateArray()",
+    "lineNumber": 87
+  },
+  {
+    "__docId__": 126,
+    "kind": "test",
+    "name": "it90",
+    "testId": 90,
+    "memberof": "src/utils/__test__/format.utils.test.js~describe89",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/format.utils.test.js~describe89.it90",
+    "access": null,
+    "description": "should return an deduplicated array",
+    "lineNumber": 88
+  },
+  {
+    "__docId__": 127,
+    "kind": "test",
+    "name": "it91",
+    "testId": 91,
+    "memberof": "src/utils/__test__/format.utils.test.js~describe89",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/format.utils.test.js~describe89.it91",
+    "access": null,
+    "description": "should return the original array when no deduplicated value is found",
+    "lineNumber": 92
+  },
+  {
+    "__docId__": 128,
+    "kind": "test",
+    "name": "it92",
+    "testId": 92,
+    "memberof": "src/utils/__test__/format.utils.test.js~describe89",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/format.utils.test.js~describe89.it92",
+    "access": null,
+    "description": "should return an empty array when input is not an array",
+    "lineNumber": 96
+  },
+  {
+    "__docId__": 129,
+    "kind": "test",
+    "name": "describe93",
+    "testId": 93,
+    "memberof": "src/utils/__test__/format.utils.test.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/utils/__test__/format.utils.test.js~describe93",
+    "access": null,
+    "description": "removeExtraSpacesAndCommas()",
+    "lineNumber": 101
+  },
+  {
+    "__docId__": 130,
+    "kind": "test",
+    "name": "it94",
+    "testId": 94,
+    "memberof": "src/utils/__test__/format.utils.test.js~describe93",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/format.utils.test.js~describe93.it94",
+    "access": null,
+    "description": "should remove multiple consecutive spaces",
+    "lineNumber": 102
+  },
+  {
+    "__docId__": 131,
+    "kind": "test",
+    "name": "it95",
+    "testId": 95,
+    "memberof": "src/utils/__test__/format.utils.test.js~describe93",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/format.utils.test.js~describe93.it95",
+    "access": null,
+    "description": "should remove trialing comma",
+    "lineNumber": 108
+  },
+  {
+    "__docId__": 132,
+    "kind": "test",
+    "name": "it96",
+    "testId": 96,
+    "memberof": "src/utils/__test__/format.utils.test.js~describe93",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/format.utils.test.js~describe93.it96",
+    "access": null,
+    "description": "should remove trialing space and comma",
+    "lineNumber": 114
+  },
+  {
+    "__docId__": 133,
+    "kind": "test",
+    "name": "it97",
+    "testId": 97,
+    "memberof": "src/utils/__test__/format.utils.test.js~describe93",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/format.utils.test.js~describe93.it97",
+    "access": null,
+    "description": "should remove multiple consecutive spaces and trialing comma",
+    "lineNumber": 120
+  },
+  {
+    "__docId__": 134,
+    "kind": "test",
+    "name": "it98",
+    "testId": 98,
+    "memberof": "src/utils/__test__/format.utils.test.js~describe93",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/format.utils.test.js~describe93.it98",
+    "access": null,
+    "description": "should return the original string when there is no multiple consecutive spaces, trialing space and comma",
+    "lineNumber": 126
+  },
+  {
+    "__docId__": 135,
+    "kind": "test",
+    "name": "describe99",
+    "testId": 99,
+    "memberof": "src/utils/__test__/format.utils.test.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/utils/__test__/format.utils.test.js~describe99",
+    "access": null,
+    "description": "convertPixelRangeToArray()",
+    "lineNumber": 133
+  },
+  {
+    "__docId__": 136,
+    "kind": "test",
+    "name": "it100",
+    "testId": 100,
+    "memberof": "src/utils/__test__/format.utils.test.js~describe99",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/format.utils.test.js~describe99.it100",
+    "access": null,
+    "lineNumber": 147
+  },
+  {
+    "__docId__": 137,
+    "kind": "test",
+    "name": "it101",
+    "testId": 101,
+    "memberof": "src/utils/__test__/format.utils.test.js~describe99",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/format.utils.test.js~describe99.it101",
+    "access": null,
+    "lineNumber": 180
+  },
+  {
+    "__docId__": 138,
+    "kind": "testFile",
+    "name": "src/utils/__test__/storage.utils.test.js",
+    "content": "/* eslint-disable no-underscore-dangle */\nimport 'jest-localstorage-mock';\nimport localStorageUtils from '../storage.utils';\n\nconst girlFriendKey = 'girlFriend';\nconst girlFriendValue1 = false;\nconst girlFriendValue2 = true;\n\nconst ageKey = 'age';\nconst age = 27;\n\nafterAll(() => {\n  localStorage.clear();\n  jest.resetAllMocks();\n});\n\ndescribe('localStorageUtils', () => {\n  describe('setKey()', () => {\n    it(`should set \"${girlFriendValue1}\" to key \"${girlFriendKey}\"`, () => {\n      localStorageUtils.setKey(girlFriendKey, girlFriendValue1);\n      expect(localStorage.setItem).toHaveBeenCalledWith(girlFriendKey, girlFriendValue1);\n      expect(Object.keys(localStorage.__STORE__)).toHaveLength(1);\n      expect(localStorage.__STORE__[girlFriendKey]).toEqual(girlFriendValue1.toString());\n    });\n\n    it('should not set item when key is not provided', () => {\n      const expectedResult = { ...localStorage.__STORE__ };\n      localStorageUtils.setKey(undefined, 'Some Data');\n      expect(Object.keys(localStorage.__STORE__)).toHaveLength(1);\n      expect(localStorage.__STORE__).toEqual(expectedResult);\n    });\n\n    it(`should update \"${girlFriendValue2}\" to key \"${girlFriendKey}\"`, () => {\n      localStorageUtils.setKey(girlFriendKey, girlFriendValue2);\n      expect(localStorage.setItem).toHaveBeenCalledWith(girlFriendKey, girlFriendValue2);\n      expect(Object.keys(localStorage.__STORE__)).toHaveLength(1);\n      expect(localStorage.__STORE__[girlFriendKey]).toEqual(girlFriendValue2.toString());\n    });\n\n    it(`should set \"${age}\" to key \"${ageKey}\"`, () => {\n      localStorageUtils.setKey(ageKey, age);\n      expect(localStorage.setItem).toHaveBeenCalledWith(ageKey, age);\n      expect(Object.keys(localStorage.__STORE__)).toHaveLength(2);\n      expect(localStorage.__STORE__[ageKey]).toEqual(age.toString());\n      expect(localStorage.__STORE__[girlFriendKey]).toEqual(girlFriendValue2.toString());\n    });\n  });\n\n  describe('getKey()', () => {\n    it(`should return \"${age}\" for key \"${ageKey}\"`, () => {\n      expect(localStorageUtils.getKey(ageKey)).toEqual(age.toString());\n      expect(localStorage.getItem).toHaveBeenCalledWith(ageKey);\n    });\n  });\n\n  describe('removeKey()', () => {\n    it(`should remove key \"${ageKey}\" from local storage`, () => {\n      localStorageUtils.removeKey(ageKey);\n      expect(localStorage.removeItem).toHaveBeenCalledWith(ageKey);\n      expect(Object.keys(localStorage.__STORE__)).toHaveLength(1);\n      expect(localStorage.__STORE__[ageKey]).toEqual(undefined);\n    });\n  });\n\n  describe('clearAll()', () => {\n    it('should clear local storage', () => {\n      localStorageUtils.clearAll();\n      expect(localStorage.clear).toHaveBeenCalled();\n      expect(localStorage.clear).toHaveBeenCalledTimes(1);\n      expect(Object.keys(localStorage.__STORE__)).toHaveLength(0);\n    });\n  });\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/utils/__test__/storage.utils.test.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 139,
+    "kind": "test",
+    "name": "describe102",
+    "testId": 102,
+    "memberof": "src/utils/__test__/storage.utils.test.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/utils/__test__/storage.utils.test.js~describe102",
+    "access": null,
+    "description": "localStorageUtils",
+    "lineNumber": 17
+  },
+  {
+    "__docId__": 140,
+    "kind": "test",
+    "name": "describe103",
+    "testId": 103,
+    "memberof": "src/utils/__test__/storage.utils.test.js~describe102",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/storage.utils.test.js~describe102.describe103",
+    "access": null,
+    "description": "setKey()",
+    "lineNumber": 18
+  },
+  {
+    "__docId__": 141,
+    "kind": "test",
+    "name": "it104",
+    "testId": 104,
+    "memberof": "src/utils/__test__/storage.utils.test.js~describe102.describe103",
+    "testDepth": 2,
+    "static": true,
+    "longname": "src/utils/__test__/storage.utils.test.js~describe102.describe103.it104",
+    "access": null,
+    "lineNumber": 19
+  },
+  {
+    "__docId__": 142,
+    "kind": "test",
+    "name": "it105",
+    "testId": 105,
+    "memberof": "src/utils/__test__/storage.utils.test.js~describe102.describe103",
+    "testDepth": 2,
+    "static": true,
+    "longname": "src/utils/__test__/storage.utils.test.js~describe102.describe103.it105",
+    "access": null,
+    "description": "should not set item when key is not provided",
+    "lineNumber": 26
+  },
+  {
+    "__docId__": 143,
+    "kind": "test",
+    "name": "it106",
+    "testId": 106,
+    "memberof": "src/utils/__test__/storage.utils.test.js~describe102.describe103",
+    "testDepth": 2,
+    "static": true,
+    "longname": "src/utils/__test__/storage.utils.test.js~describe102.describe103.it106",
+    "access": null,
+    "lineNumber": 33
+  },
+  {
+    "__docId__": 144,
+    "kind": "test",
+    "name": "it107",
+    "testId": 107,
+    "memberof": "src/utils/__test__/storage.utils.test.js~describe102.describe103",
+    "testDepth": 2,
+    "static": true,
+    "longname": "src/utils/__test__/storage.utils.test.js~describe102.describe103.it107",
+    "access": null,
+    "lineNumber": 40
+  },
+  {
+    "__docId__": 145,
+    "kind": "test",
+    "name": "describe108",
+    "testId": 108,
+    "memberof": "src/utils/__test__/storage.utils.test.js~describe102",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/storage.utils.test.js~describe102.describe108",
+    "access": null,
+    "description": "getKey()",
+    "lineNumber": 49
+  },
+  {
+    "__docId__": 146,
+    "kind": "test",
+    "name": "it109",
+    "testId": 109,
+    "memberof": "src/utils/__test__/storage.utils.test.js~describe102.describe108",
+    "testDepth": 2,
+    "static": true,
+    "longname": "src/utils/__test__/storage.utils.test.js~describe102.describe108.it109",
+    "access": null,
+    "lineNumber": 50
+  },
+  {
+    "__docId__": 147,
+    "kind": "test",
+    "name": "describe110",
+    "testId": 110,
+    "memberof": "src/utils/__test__/storage.utils.test.js~describe102",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/storage.utils.test.js~describe102.describe110",
+    "access": null,
+    "description": "removeKey()",
+    "lineNumber": 56
+  },
+  {
+    "__docId__": 148,
+    "kind": "test",
+    "name": "it111",
+    "testId": 111,
+    "memberof": "src/utils/__test__/storage.utils.test.js~describe102.describe110",
+    "testDepth": 2,
+    "static": true,
+    "longname": "src/utils/__test__/storage.utils.test.js~describe102.describe110.it111",
+    "access": null,
+    "lineNumber": 57
+  },
+  {
+    "__docId__": 149,
+    "kind": "test",
+    "name": "describe112",
+    "testId": 112,
+    "memberof": "src/utils/__test__/storage.utils.test.js~describe102",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/storage.utils.test.js~describe102.describe112",
+    "access": null,
+    "description": "clearAll()",
+    "lineNumber": 65
+  },
+  {
+    "__docId__": 150,
+    "kind": "test",
+    "name": "it113",
+    "testId": 113,
+    "memberof": "src/utils/__test__/storage.utils.test.js~describe102.describe112",
+    "testDepth": 2,
+    "static": true,
+    "longname": "src/utils/__test__/storage.utils.test.js~describe102.describe112.it113",
+    "access": null,
+    "description": "should clear local storage",
+    "lineNumber": 66
+  },
+  {
+    "__docId__": 151,
+    "kind": "testFile",
+    "name": "src/utils/__test__/validate.utils.test.js",
+    "content": "import { isValidPositiveInteger, isValidFontSize } from '../validate.utils';\n\ndescribe('isValidPositiveInteger()', () => {\n  [\n    '1',\n    '16'\n  ].forEach(\n    (validFontSize) => {\n      it(`should identify \"${validFontSize}\" as valid integer string`, () => {\n        expect(isValidPositiveInteger(validFontSize)).toEqual(true);\n      });\n    }\n  );\n\n  [\n    '.5',\n    '16px',\n    'apple',\n    'A4',\n    '23.5',\n    '12.0'\n  ].forEach(\n    (invalidFontSize) => {\n      it(`should identify \"${invalidFontSize}\" as invalid integer string`, () => {\n        expect(isValidPositiveInteger(invalidFontSize)).toEqual(false);\n      });\n    }\n  );\n});\n\ndescribe('isValidFontSize()', () => {\n  [\n    '1',\n    '16',\n    '23.5',\n    '12.0'\n  ].forEach(\n    (validFontSize) => {\n      it(`should identify \"${validFontSize}\" as valid font size`, () => {\n        expect(isValidFontSize(validFontSize)).toEqual(true);\n      });\n    }\n  );\n\n  [\n    '.5',\n    '16px',\n    'apple',\n    'A4',\n    '11D',\n    '11%22',\n    '16,3',\n    '16,3,3'\n  ].forEach(\n    (invalidFontSize) => {\n      it(`should identify \"${invalidFontSize}\" as invalid font size`, () => {\n        expect(isValidFontSize(invalidFontSize)).toEqual(false);\n      });\n    }\n  );\n});\n",
+    "static": true,
+    "longname": "/Users/pinkylam/Personal/code/px2em-converter/src/utils/__test__/validate.utils.test.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 152,
+    "kind": "test",
+    "name": "describe114",
+    "testId": 114,
+    "memberof": "src/utils/__test__/validate.utils.test.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/utils/__test__/validate.utils.test.js~describe114",
+    "access": null,
+    "description": "isValidPositiveInteger()",
+    "lineNumber": 3
+  },
+  {
+    "__docId__": 153,
+    "kind": "test",
+    "name": "it115",
+    "testId": 115,
+    "memberof": "src/utils/__test__/validate.utils.test.js~describe114",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/validate.utils.test.js~describe114.it115",
+    "access": null,
+    "lineNumber": 9
+  },
+  {
+    "__docId__": 154,
+    "kind": "test",
+    "name": "it116",
+    "testId": 116,
+    "memberof": "src/utils/__test__/validate.utils.test.js~describe114",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/validate.utils.test.js~describe114.it116",
+    "access": null,
+    "lineNumber": 24
+  },
+  {
+    "__docId__": 155,
+    "kind": "test",
+    "name": "describe117",
+    "testId": 117,
+    "memberof": "src/utils/__test__/validate.utils.test.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "src/utils/__test__/validate.utils.test.js~describe117",
+    "access": null,
+    "description": "isValidFontSize()",
+    "lineNumber": 31
+  },
+  {
+    "__docId__": 156,
+    "kind": "test",
+    "name": "it118",
+    "testId": 118,
+    "memberof": "src/utils/__test__/validate.utils.test.js~describe117",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/validate.utils.test.js~describe117.it118",
+    "access": null,
+    "lineNumber": 39
+  },
+  {
+    "__docId__": 157,
+    "kind": "test",
+    "name": "it119",
+    "testId": 119,
+    "memberof": "src/utils/__test__/validate.utils.test.js~describe117",
+    "testDepth": 1,
+    "static": true,
+    "longname": "src/utils/__test__/validate.utils.test.js~describe117.it119",
+    "access": null,
+    "lineNumber": 56
+  }
+]
