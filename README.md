@@ -14,7 +14,6 @@
 [![Build](https://github.com/icelam/px2em-converter/workflows/Build/badge.svg)](https://github.com/icelam/px2em-converter/actions?query=workflow%3ABuild)
 [![Unit Test](https://github.com/icelam/px2em-converter/workflows/Unit%20test/badge.svg)](https://github.com/icelam/px2em-converter/actions?query=workflow%3A%22Unit+test%22)
 [![codecov](https://codecov.io/gh/icelam/px2em-converter/branch/master/graph/badge.svg)](https://codecov.io/gh/icelam/px2em-converter)
-[![lgtm.com](https://img.shields.io/lgtm/grade/javascript/g/icelam/px2em-converter.svg?logo=lgtm)](https://lgtm.com/projects/g/icelam/px2em-converter/context:javascript)
 
 # PX2EM Converter #
 PX2EM is a conversion tool which allows you to calculate the em sizes from pixels. Unlike any other pixel to em conversion tool, PX2EM allows you to convert a list of pixels at one time, and save your inputs for re-visit.
