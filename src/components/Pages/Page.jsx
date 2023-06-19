@@ -20,7 +20,7 @@ const Container = styled.div`
   }
 
   @media ${({ theme: { mediaQueries } }) => mediaQueries.mobile} {
-    padding: 1rem 1rem 0 1rem;
+    padding: 2.5rem 1rem 0 1rem;
     margin-bottom: -5rem;
 
     &:after {
